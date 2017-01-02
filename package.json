@@ -1,12 +1,13 @@
 {
   "name": "js_l1_brain_games-s12",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "Brain games",
   "bin": {
     "brain-even": "./bin/brain-even.js"
   },
   "scripts": {
     "babel-node": "babel-node",
+    "eslint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,10 +23,15 @@
   "dependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-plugin-transform-flow-strip-types": "^6.21.0",
     "babel-preset-env": "^1.1.4",
     "babel-preset-stage-0": "^6.16.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-flowtype": "^2.29.2",
+    "eslint-plugin-import": "^2.2.0",
     "flow-bin": "^0.37.4",
     "flow-typed": "^2.0.0"
   }
