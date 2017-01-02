@@ -1,12 +1,13 @@
 {
   "name": "js_l1_brain_games-s12",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "bin": {
-    "brain-even": "./bin/brain-event.js"
+    "brain-even": "./bin/brain-even.js"
   },
-  "main": "bin/brain-event.js",
+  "main": "bin/brain-even.js",
   "scripts": {
+    "babel-node": "babel-node",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/antonazgarovich/js_l1_brain_games-s12/issues"
   },
-  "homepage": "https://github.com/antonazgarovich/js_l1_brain_games-s12#readme"
+  "homepage": "https://github.com/antonazgarovich/js_l1_brain_games-s12#readme",
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-preset-stage-0": "^6.16.0"
+  }
 }
