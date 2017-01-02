@@ -1,6 +1,6 @@
 {
   "name": "js_l1_brain_games-s12",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "bin": {
     "brain-even": "./bin/brain-event.js"
