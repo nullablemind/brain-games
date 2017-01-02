@@ -1,8 +1,11 @@
 install:
-			npm install
+		npm install
 
 run:
-			npm run babel-node -- './bin/$(G)'
+		npm run babel-node -- './bin/$(G)'
 
 publish:
-			npm publish
+		npm publish
+
+lint:
+		npm run eslint
