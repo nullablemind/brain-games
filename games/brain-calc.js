@@ -1,8 +1,6 @@
 // @flow
 
-import {
-  greetingGame, displayDescriptionGame, getUserName, greetingUser, playing, gameEnd,
-} from '../index';
+import game from '../index';
 
 const getRandomNumber = (min: number, max: number) =>
   Math.floor(min + (Math.random() * ((max + 1) - min)));
@@ -37,13 +35,8 @@ const calc = (arithmeticSign: string, number1: number, number2: number) => {
   }
 };
 
-greetingGame();
-displayDescriptionGame('What is the result of the expression?');
-
-const userName = getUserName();
-greetingUser(userName);
-
-const resultGame = playing({
+game({
+  descriptionGame: 'What is the result of the expression?',
   getRandomQuestion: () => {
     const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
     const number1 = getRandomNumber(1, 100);
@@ -56,5 +49,3 @@ const resultGame = playing({
   getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
     String(calc(arithmeticSign, number1, number2)),
 });
-
-gameEnd(resultGame, userName);
