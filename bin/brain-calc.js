@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // @flow
 
-import readlineSync from 'readline-sync';
+import {
+  greetingGame, displayDescriptionGame, getUserName, greetingUser, playing, gameEnd,
+} from '../index';
 
 const getRandomNumber = (min: number, max: number) =>
   Math.floor(min + (Math.random() * ((max + 1) - min)));
@@ -36,36 +38,24 @@ const calc = (arithmeticSign: string, number1: number, number2: number) => {
   }
 };
 
-console.log('Welcome to the Brain Games!');
-console.log('What is the result of the expression?\n');
+greetingGame();
+displayDescriptionGame('What is the result of the expression?');
 
-const userName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${userName}!\n`);
+const userName = getUserName();
+greetingUser(userName);
 
-let passedGame = false;
-for (let i = 0; i < 3; i += 1) {
-  const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
-  const number1 = getRandomNumber(1, 100);
-  const number2 = getRandomNumber(1, 100);
-  const correctAnswer = calc(arithmeticSign, number1, number2);
+const resultGame = playing({
+  getRandomQuestion: () => {
+    const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
+    const number1 = getRandomNumber(1, 100);
+    const number2 = getRandomNumber(1, 100);
 
-  const question = `${number1} ${arithmeticSign} ${number2}`;
-  console.log(`Question: ${question} `);
-  const userAnswer = readlineSync.question('Your answer: ');
+    return { arithmeticSign, number1, number2 };
+  },
+  toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
+    `${number1} ${arithmeticSign} ${number2}`,
+  getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
+    String(calc(arithmeticSign, number1, number2)),
+});
 
-  if (String(correctAnswer) === userAnswer) {
-    console.log('Correct!');
-    passedGame = true;
-  } else {
-    console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-    passedGame = false;
-    break;
-  }
-}
-
-if (passedGame) {
-  console.log(`Congratulations, ${userName}`);
-} else {
-  console.log(`Let's try again, ${userName}!`);
-}
-
+gameEnd(resultGame, userName);
