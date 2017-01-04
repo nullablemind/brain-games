@@ -1,5 +1,5 @@
 // @flow
-import game from '../index';
+import game from '..';
 import { getRandomNumber } from '../utils';
 
 const isOdd = (number: number) =>
