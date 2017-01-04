@@ -1,5 +1,5 @@
 // @flow
-import game from '../index';
+import game from '..';
 import { getRandomNumber } from '../utils';
 
 const getGCD = (number1: number, number2: number) =>
