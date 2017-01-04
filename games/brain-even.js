@@ -1,8 +1,6 @@
 // @flow
 import game from '../index';
-
-const getRandom = (min: number, max: number) =>
-  Math.floor(min + (Math.random() * ((max + 1) - min)));
+import { getRandomNumber } from '../utils';
 
 const isOdd = (number: number) =>
   Math.abs(number % 2) === 1;
@@ -10,6 +8,6 @@ const isOdd = (number: number) =>
 export default () =>
   game({
     descriptionGame: 'Answer "yes" if number odd otherwise answer "no".',
-    getRandomQuestion: () => getRandom(0, 100),
+    getRandomQuestion: () => getRandomNumber(0, 100),
     getCorrectAnswer: question => (isOdd(question) ? 'yes' : 'no'),
   });

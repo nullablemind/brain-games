@@ -1,11 +1,9 @@
 // @flow
 import game from '../index';
-
-const getRandomNumber = (min: number, max: number) =>
-  Math.floor(min + (Math.random() * ((max + 1) - min)));
+import { getRandomNumber } from '../utils';
 
 const getRandomArithmeticSign = (generatorRandomNumber: Function) => {
-  switch (generatorRandomNumber(1, 4)) { // eslint-disable-line
+  switch (generatorRandomNumber(1, 4)) {
     case 1:
       return '+';
     case 2:
@@ -47,5 +45,5 @@ export default () =>
     toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
       `${number1} ${arithmeticSign} ${number2}`,
     getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
-      String(calc(arithmeticSign, number1, number2)),
+      calc(arithmeticSign, number1, number2),
   });

@@ -21,7 +21,7 @@ export default ({
     console.log(`Question: ${toStringQuestion(question)}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
-    const correctAnswer = getCorrectAnswer(question);
+    const correctAnswer = String(getCorrectAnswer(question));
 
     if (correctAnswer === userAnswer) {
       console.log('Correct!');
