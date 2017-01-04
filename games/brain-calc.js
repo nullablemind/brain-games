@@ -1,8 +1,6 @@
 // @flow
 import game from '../index';
-
-const getRandomNumber = (min: number, max: number) =>
-  Math.floor(min + (Math.random() * ((max + 1) - min)));
+import { getRandomNumber } from '../utils';
 
 const getRandomArithmeticSign = (generatorRandomNumber: Function) => {
   switch (generatorRandomNumber(1, 4)) { // eslint-disable-line
