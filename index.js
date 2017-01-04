@@ -15,7 +15,7 @@ export default ({
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!\n`);
 
-  let isWin = false;
+  let lostGame = false;
   for (let i = 0; i < 3; i += 1) {
     const question = getRandomQuestion();
     console.log(`Question: ${toStringQuestion(question)}`);
@@ -25,17 +25,16 @@ export default ({
 
     if (correctAnswer === userAnswer) {
       console.log('Correct!');
-      isWin = true;
     } else {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      isWin = false;
+      lostGame = true;
       break;
     }
   }
 
-  if (isWin) {
-    console.log(`Congratulations, ${userName}`);
-  } else {
+  if (lostGame) {
     console.log(`Let's try again, ${userName}!`);
+  } else {
+    console.log(`Congratulations, ${userName}`);
   }
 };
