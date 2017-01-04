@@ -3,7 +3,7 @@ import game from '../index';
 import { getRandomNumber } from '../utils';
 
 const getRandomArithmeticSign = (generatorRandomNumber: Function) => {
-  switch (generatorRandomNumber(1, 4)) { // eslint-disable-line
+  switch (generatorRandomNumber(1, 4)) {
     case 1:
       return '+';
     case 2:
