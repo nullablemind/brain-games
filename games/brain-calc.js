@@ -45,5 +45,5 @@ export default () =>
     toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
       `${number1} ${arithmeticSign} ${number2}`,
     getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
-      String(calc(arithmeticSign, number1, number2)),
+      calc(arithmeticSign, number1, number2),
   });

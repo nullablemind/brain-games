@@ -18,5 +18,5 @@ export default () =>
       return { gcd, number1, number2 };
     },
     toStringQuestion: ({ number1, number2 }) => `${number1} ${number2}`,
-    getCorrectAnswer: ({ gcd }) => String(gcd),
+    getCorrectAnswer: ({ gcd }) => gcd,
   });
