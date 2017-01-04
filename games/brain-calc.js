@@ -1,5 +1,4 @@
 // @flow
-
 import game from '../index';
 
 const getRandomNumber = (min: number, max: number) =>
@@ -35,17 +34,18 @@ const calc = (arithmeticSign: string, number1: number, number2: number) => {
   }
 };
 
-game({
-  descriptionGame: 'What is the result of the expression?',
-  getRandomQuestion: () => {
-    const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
-    const number1 = getRandomNumber(1, 100);
-    const number2 = getRandomNumber(1, 100);
+export default () =>
+  game({
+    descriptionGame: 'What is the result of the expression?',
+    getRandomQuestion: () => {
+      const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
+      const number1 = getRandomNumber(1, 100);
+      const number2 = getRandomNumber(1, 100);
 
-    return { arithmeticSign, number1, number2 };
-  },
-  toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
-    `${number1} ${arithmeticSign} ${number2}`,
-  getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
-    String(calc(arithmeticSign, number1, number2)),
-});
+      return { arithmeticSign, number1, number2 };
+    },
+    toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
+      `${number1} ${arithmeticSign} ${number2}`,
+    getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
+      String(calc(arithmeticSign, number1, number2)),
+  });
