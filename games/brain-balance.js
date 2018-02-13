@@ -79,7 +79,12 @@ const quickSort = (numbers: string) => {
 
 export default () =>
   game({
-    descriptionGame: 'Balance the given number.',
-    getRandomQuestion: () => getRandomNumber(100, 10000),
-    getCorrectAnswer: question => quickSort(balanceNumber(String(question))),
+    description: 'Balance the given number.',
+    generatorQuestion: () => {
+      const number = getRandomNumber(100, 10000);
+      const string = number.toString();
+      const answer = quickSort(balanceNumber(String(string)));
+
+      return { string, answer };
+    },
   });

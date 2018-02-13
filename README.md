@@ -3,6 +3,8 @@
 
 `make install` - Установка зависимостей
 
-`make run G=brain-event.js` - Запуск игры brain-event
+`make list-games` - Получить список игр
+
+`make run G=brain-even` - Запуск игры brain-event (не нужно указывать расширение .js)
 
 `make publish` - Публикация игр

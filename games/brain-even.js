@@ -1,13 +1,15 @@
 // @flow
 import game from '..';
-import { getRandomNumber } from '../utils';
-
-const isOdd = (number: number) =>
-  Math.abs(number % 2) === 1;
+import { getRandomNumber, isOdd } from '../utils';
 
 export default () =>
   game({
-    descriptionGame: 'Answer "yes" if number odd otherwise answer "no".',
-    getRandomQuestion: () => getRandomNumber(0, 100),
-    getCorrectAnswer: question => (isOdd(question) ? 'yes' : 'no'),
+    description: 'Answer "yes" if number odd otherwise answer "no".',
+    generatorQuestion: () => {
+      const number = getRandomNumber(1, 100);
+      const stringQuestion = number.toString();
+      const answer = isOdd(number) ? 'yes' : 'no';
+
+      return { string: stringQuestion, answer };
+    },
   });

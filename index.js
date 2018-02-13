@@ -1,40 +1,68 @@
 // @flow
 import readlineSync from 'readline-sync';
 
-export default ({
-  descriptionGame, getRandomQuestion, toStringQuestion = q => q, getCorrectAnswer,
-} : {
-  descriptionGame: string,
-  getRandomQuestion: Function,
-  toStringQuestion?: Function,
-  getCorrectAnswer: Function
-}) => {
-  console.log('Welcome to the Brain Games!');
-  console.log(`${descriptionGame}\n`);
+const print = (string: string, funcPrint?: Function) =>
+  (funcPrint ? funcPrint(string) : console.log(string));
 
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!\n`);
+const ask = (question: string) => readlineSync.question(question);
 
-  let lostGame = false;
-  for (let i = 0; i < 3; i += 1) {
-    const question = getRandomQuestion();
-    console.log(`Question: ${toStringQuestion(question)}`);
-    const userAnswer = readlineSync.question('Your answer: ');
+function GameCycle({ attempts, generatorQuestion }) {
+  let isLostGame = false;
 
-    const correctAnswer = String(getCorrectAnswer(question));
+  this.onWinStep = () => {};
+  this.onWinGame = () => {};
+  this.onLostStep = () => {};
+  this.onLostGame = () => {};
 
-    if (correctAnswer === userAnswer) {
-      console.log('Correct!');
-    } else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
-      lostGame = true;
-      break;
+  this.play = () => {
+    for (let i = 0; i < attempts; i += 1) {
+      const question = generatorQuestion();
+      print(`Question: ${question.string}`);
+
+      const userAnswer = ask('Your answer: ');
+      const rightAnswer = question.answer;
+
+      if (this._isEqualAnswers(rightAnswer, userAnswer)) {
+        this.onWinStep({ userAnswer, rightAnswer });
+      } else {
+        this.onLostStep({ userAnswer, rightAnswer });
+        isLostGame = true;
+        break;
+      }
     }
-  }
 
-  if (lostGame) {
-    console.log(`Let's try again, ${userName}!`);
-  } else {
-    console.log(`Congratulations, ${userName}`);
-  }
+    if (isLostGame) {
+      this.onLostGame();
+    } else {
+      this.onWinGame();
+    }
+  };
+
+  this._isEqualAnswers = (answer1: *, answer2: *) =>
+    answer1.toString() === answer2.toString();
+}
+
+export default ({
+  description, generatorQuestion, attempts = 3,
+} : {
+  description: string,
+  generatorQuestion: Function,
+  attempts?: number,
+}) => {
+  print('Welcome to the Brain Games!');
+  print(`${description}\n`);
+
+  const userName = ask('May I have your name? ');
+  print(`Hello, ${userName}!\n`);
+
+  const gameCycle = new GameCycle({ attempts, generatorQuestion });
+
+  gameCycle.onLostStep = ({ userAnswer, rightAnswer }) =>
+    print(`"${userAnswer}" is wrong answer ;(. Correct answer was "${rightAnswer}".`);
+
+  gameCycle.onWinStep = () => print('Correct!');
+  gameCycle.onLostGame = () => print(`Let's try again, ${userName}!`);
+  gameCycle.onWinGame = () => print(`Congratulations, ${userName}`);
+
+  gameCycle.play();
 };

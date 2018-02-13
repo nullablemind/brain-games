@@ -4,14 +4,18 @@ plugins: [flowtype]
 
 env:
   node: true
+  es6: true
 
 parser: babel-eslint
 
 parserOptions:
-  ecmaVersion: 2017
+  ecmaVersion: 6
   sourceType: module
 
 extends:
   - 'airbnb/base'
   - plugin:import/errors
   - plugin:import/warnings
+
+rules:
+  no-underscore-dangle: 0

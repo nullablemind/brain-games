@@ -17,18 +17,18 @@ const generateArithmeticSequence = (length: number) => {
 
 export default () =>
   game({
-    descriptionGame: 'What number is missing in this progression?',
-    getRandomQuestion: () => {
+    description: 'What number is missing in this progression?',
+    generatorQuestion: () => {
       const lengthSequence = 10;
       const indexHideNumber = getRandomNumber(1, lengthSequence);
       const sequence = generateArithmeticSequence(lengthSequence);
 
-      return { sequence, indexHideNumber };
-    },
-    toStringQuestion: ({ sequence, indexHideNumber }) => {
       const copySequence = sequence.slice();
       copySequence[indexHideNumber] = '..';
-      return copySequence.join(' ');
+
+      const string = copySequence.join(' ');
+      const answer = sequence[indexHideNumber];
+
+      return { string, answer };
     },
-    getCorrectAnswer: ({ sequence, indexHideNumber }) => sequence[indexHideNumber],
   });

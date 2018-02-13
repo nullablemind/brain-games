@@ -1,21 +1,6 @@
 // @flow
 import game from '..';
-import { getRandomNumber } from '../utils';
-
-const getRandomArithmeticSign = (generatorRandomNumber: Function) => {
-  switch (generatorRandomNumber(1, 4)) {
-    case 1:
-      return '+';
-    case 2:
-      return '-';
-    case 3:
-      return '*';
-    case 4:
-      return '/';
-    default:
-      throw Error('function generatorRandomNumber should return number from 1 to 4');
-  }
-};
+import { getRandomNumber, randomArithmeticSign } from '../utils';
 
 const calc = (arithmeticSign: string, number1: number, number2: number) => {
   switch (arithmeticSign) {
@@ -34,16 +19,15 @@ const calc = (arithmeticSign: string, number1: number, number2: number) => {
 
 export default () =>
   game({
-    descriptionGame: 'What is the result of the expression?',
-    getRandomQuestion: () => {
-      const arithmeticSign = getRandomArithmeticSign(getRandomNumber);
+    description: 'What is the result of the expression?',
+    generatorQuestion: () => {
+      const arithmeticSign = randomArithmeticSign();
       const number1 = getRandomNumber(1, 100);
       const number2 = getRandomNumber(1, 100);
 
-      return { arithmeticSign, number1, number2 };
+      const stringQuestion = `${number1} ${arithmeticSign} ${number2}`;
+      const answer = calc(arithmeticSign, number1, number2);
+
+      return { string: stringQuestion, answer };
     },
-    toStringQuestion: ({ arithmeticSign, number1, number2 }) =>
-      `${number1} ${arithmeticSign} ${number2}`,
-    getCorrectAnswer: ({ arithmeticSign, number1, number2 }) =>
-      calc(arithmeticSign, number1, number2),
   });
