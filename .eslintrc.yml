@@ -5,6 +5,7 @@ plugins: [flowtype]
 env:
   node: true
   es6: true
+  jest: true
 
 parser: babel-eslint
 
@@ -19,3 +20,4 @@ extends:
 
 rules:
   no-underscore-dangle: 0
+  no-plusplus: 0

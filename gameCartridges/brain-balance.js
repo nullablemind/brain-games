@@ -1,8 +1,6 @@
-// @flow
-import game from '..';
-import { getRandomNumber } from '../utils';
+import { getRandomNumber } from '../catridgeUtils';
 
-const replaceChar = (string: string, index: number, newChar: number | string) => {
+const replaceChar = (string, index, newChar) => {
   let newString = '';
   for (let i = 0; i < string.length; i += 1) {
     if (i === index) {
@@ -14,7 +12,7 @@ const replaceChar = (string: string, index: number, newChar: number | string) =>
   return newString;
 };
 
-const getIndexMaxNumber = (numbers: string) => {
+const getIndexMaxNumber = (numbers) => {
   let index = 0;
   let max = numbers[index];
 
@@ -28,7 +26,7 @@ const getIndexMaxNumber = (numbers: string) => {
   return index;
 };
 
-const getIndexMinNumber = (numbers: string) => {
+const getIndexMinNumber = (numbers) => {
   let index = 0;
   let min = numbers[index];
 
@@ -42,7 +40,7 @@ const getIndexMinNumber = (numbers: string) => {
   return index;
 };
 
-const balanceNumber = (numbers: string) => {
+const balanceNumber = (numbers) => {
   const indexMaxNum = getIndexMaxNumber(numbers);
   const indexMinNum = getIndexMinNumber(numbers);
   const max = Number(numbers[indexMaxNum]);
@@ -57,7 +55,7 @@ const balanceNumber = (numbers: string) => {
   return balanceNumber(newNumbers);
 };
 
-const quickSort = (numbers: string) => {
+const quickSort = (numbers) => {
   if (numbers.length < 2) {
     return numbers;
   }
@@ -77,14 +75,13 @@ const quickSort = (numbers: string) => {
   return quickSort(lesser) + pivot + quickSort(greater);
 };
 
-export default () =>
-  game({
-    description: 'Balance the given number.',
-    generatorQuestion: () => {
-      const number = getRandomNumber(100, 10000);
-      const string = number.toString();
-      const answer = quickSort(balanceNumber(String(string)));
+export default {
+  description: 'Balance the given number.',
+  generatorQuiz() {
+    const number = getRandomNumber(100, 10000);
+    const question = number.toString();
+    const solution = quickSort(balanceNumber(question));
 
-      return { string, answer };
-    },
-  });
+    return { question, solution };
+  },
+};
