@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antonazgarovich/js_l1_brain_games-s12.git"
+    "url": "git+https://github.com/antonazgarovich/brain-games.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/antonazgarovich/js_l1_brain_games-s12/issues"
+    "url": "https://github.com/antonazgarovich/brain-games/issues"
   },
-  "homepage": "https://github.com/antonazgarovich/js_l1_brain_games-s12#readme",
+  "homepage": "https://github.com/antonazgarovich/brain-games#readme",
   "dependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
