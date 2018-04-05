@@ -4,7 +4,7 @@ install:
 run:
 		npm run babel-node -- './bin/$(G).js'
 
-list-games:
+game-list:
 		ls './bin/'
 
 publish:
