@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../catridgeUtils';
+import { getRandomNumber } from '../cartridgeUtils';
 
 const getGCD = (number1, number2) =>
   (number2 === 0

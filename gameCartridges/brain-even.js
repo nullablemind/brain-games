@@ -1,4 +1,4 @@
-import { getRandomNumber, isOdd } from '../catridgeUtils';
+import { getRandomNumber, isOdd } from '../cartridgeUtils';
 
 export default {
   description: 'Answer "yes" if number odd otherwise answer "no".',
