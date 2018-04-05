@@ -1,4 +1,5 @@
 export default ({ response, request, description, listOfQuiz }) => {
+  console.log(listOfQuiz);
   response('welcome');
   response('quizDescription', description);
 

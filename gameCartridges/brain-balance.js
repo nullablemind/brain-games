@@ -12,39 +12,11 @@ const replaceChar = (string, index, newChar) => {
   return newString;
 };
 
-const getIndexMaxNumber = (numbers) => {
-  let index = 0;
-  let max = numbers[index];
-
-  for (let i = 1; i < numbers.length; i += 1) {
-    if (numbers[i] > max) {
-      max = numbers[i];
-      index = i;
-    }
-  }
-
-  return index;
-};
-
-const getIndexMinNumber = (numbers) => {
-  let index = 0;
-  let min = numbers[index];
-
-  for (let i = 1; i < numbers.length; i += 1) {
-    if (numbers[i] < min) {
-      min = numbers[i];
-      index = i;
-    }
-  }
-
-  return index;
-};
-
 const balanceNumber = (numbers) => {
-  const indexMaxNum = getIndexMaxNumber(numbers);
-  const indexMinNum = getIndexMinNumber(numbers);
-  const max = Number(numbers[indexMaxNum]);
-  const min = Number(numbers[indexMinNum]);
+  const max = Math.max(...numbers);
+  const min = Math.min(...numbers);
+  const indexMaxNum = numbers.indexOf(max);
+  const indexMinNum = numbers.indexOf(min);
 
   if (max - min <= 1) {
     return numbers;
