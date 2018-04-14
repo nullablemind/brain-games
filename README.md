@@ -1,5 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/antonazgarovich/js_l1_brain_games-s12/badges/gpa.svg)](https://codeclimate.com/github/antonazgarovich/js_l1_brain_games-s12)
-[![Build Status](https://travis-ci.org/antonazgarovich/js_l1_brain_games-s12.svg?branch=master)](https://travis-ci.org/antonazgarovich/js_l1_brain_games-s12)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8e7e6da2c62a19bc8a02/maintainability)](https://codeclimate.com/github/antonazgarovich/brain-games/maintainability)
+[![Build Status](https://travis-ci.org/antonazgarovich/brain-games.svg?branch=master)](https://travis-ci.org/antonazgarovich/brain-games)
 
 `make install` - Установка зависимостей
 
