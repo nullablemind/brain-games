@@ -1,6 +1,6 @@
-export default (generator, quantaty) => {
+export default (generator, quantity) => {
   const arrayOfQuiz = [];
-  for (let i = 0; i < quantaty; i++) {
+  for (let i = 0; i < quantity; i++) {
     arrayOfQuiz.push(generator());
   }
   return arrayOfQuiz;
