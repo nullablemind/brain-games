@@ -1,26 +1,26 @@
 export default ({ response, request, description, listOfQuiz }) => {
-  response('welcome');
-  response('quizDescription', description);
+  response('Welcome to the Brain Games!');
+  response(`Quiz description: ${description}\n`);
 
-  const playerName = request('playerNameRequest');
-  response('greetingPlayer', playerName);
+  const playerName = request('May I have your name? ');
+  response(`Hello, ${playerName}!\n`);
 
   const indexOfLastQuiz = listOfQuiz.length - 1;
   for (let i = 0; i < listOfQuiz.length; i++) {
     const { question, solution } = listOfQuiz[i];
 
-    const playerResponse = request('quizQuestion', question);
+    const playerResponse = request(`Question: ${question}\nYour answer: `);
 
     if (playerResponse !== solution) {
-      response('wrongAnswer', playerResponse, solution);
-      response('tryAgain', playerName);
+      response(`"${playerResponse}" is wrong answer ;(. Correct answer was "${solution}".\n`);
+      response(`Let\'s try again, ${playerName}!`);
       break;
     }
 
-    response('correctAnswer');
+    response('Correct!\n');
 
     if (i === indexOfLastQuiz) {
-      response('congratulateWithVictory', playerName);
+      response(`Congratulations, ${playerName}!`);
     }
   }
 };
