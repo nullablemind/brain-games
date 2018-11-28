@@ -22,19 +22,19 @@
   "homepage": "https://github.com/antonazgarovich/brain-games#readme",
   "dependencies": {
     "babel-cli": "^6.18.0",
-    "babel-core": "^6.21.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^7.1.1",
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-plugin-transform-flow-strip-types": "^6.21.0",
-    "babel-preset-env": "^1.1.4",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.16.0",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
-    "eslint-plugin-flowtype": "^2.29.2",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
     "readline-sync": "^1.4.5"
   },
   "devDependencies": {
-    "jest": "^22.4.3"
+    "jest": "^22.4.4"
   }
 }
