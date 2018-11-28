@@ -13,7 +13,7 @@ export default ({ response, request, description, listOfQuiz }) => {
 
     if (playerResponse !== solution) {
       response(`"${playerResponse}" is wrong answer ;(. Correct answer was "${solution}".\n`);
-      response(`Let\'s try again, ${playerName}!`);
+      response(`Let's try again, ${playerName}!`);
       break;
     }
 
