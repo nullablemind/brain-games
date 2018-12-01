@@ -1,26 +1,28 @@
-export default ({ response, request, description, listOfQuiz }) => {
-  response('Welcome to the Brain Games!');
-  response(`Quiz description: ${description}\n`);
+export default ({ response: write, request: read, description, listOfQuiz }) => {
+  write('Welcome to the Brain Games!\n');
+  write(`Quiz description: ${description}\n\n`);
 
-  const playerName = request('May I have your name? ');
-  response(`Hello, ${playerName}!\n`);
+  write('May I have your name? ');
+  const playerName = read();
+  write(`Hello, ${playerName}!\n\n`);
 
   const indexOfLastQuiz = listOfQuiz.length - 1;
   for (let i = 0; i < listOfQuiz.length; i++) {
     const { question, solution } = listOfQuiz[i];
 
-    const playerResponse = request(`Question: ${question}\nYour answer: `);
+    write(`Question: ${question}\nYour answer: `);
+    const playerResponse = read();
 
     if (playerResponse !== solution) {
-      response(`"${playerResponse}" is wrong answer ;(. Correct answer was "${solution}".\n`);
-      response(`Let's try again, ${playerName}!`);
+      write(`\n"${playerResponse}" is wrong answer ;(. Correct answer was "${solution}".\n`);
+      write(`Let's try again, ${playerName}!`);
       break;
     }
 
-    response('Correct!\n');
+    write('Correct!\n\n');
 
     if (i === indexOfLastQuiz) {
-      response(`Congratulations, ${playerName}!`);
+      write(`Congratulations, ${playerName}!\n`);
     }
   }
 };

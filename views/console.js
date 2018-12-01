@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const response = msg => console.log(msg);
-const request = msg => readlineSync.question(msg);
+const response = msg => process.stdout.write(msg);
+const request = () => readlineSync.question();
 
 export default { response, request };
