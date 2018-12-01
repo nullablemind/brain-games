@@ -2,7 +2,8 @@ import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 
 const quiz = args => {
   const {
-    listOfQuiz = [],
+    generatorQuiz,
+    attempts,
     onNextQuestion = () => {},
     onWrongAnswer = () => {},
     onRightAnswer = () => {},
@@ -10,7 +11,7 @@ const quiz = args => {
     onLoseQuiz = () => {},
   } = args;
 
-  listOfQuiz.reduce((lastAnsweredCorrectly, quiz, index) => {
+  createListOfQuiz(generatorQuiz, attempts).reduce((lastAnsweredCorrectly, quiz, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
 
     const answer = onNextQuestion(quiz);
@@ -24,7 +25,8 @@ const quiz = args => {
 
     onRightAnswer(quiz);
 
-    if (index === listOfQuiz.length) {
+    const attempt = index + 1;
+    if (attempt === attempts) {
       onWinQuiz();
     }
     return true;
@@ -41,7 +43,8 @@ export default ({ write, read }) =>
     write(`Hello, ${playerName}!\n\n`);
 
     quiz({
-      listOfQuiz: createListOfQuiz(generatorQuiz, attempts),
+      generatorQuiz,
+      attempts,
       onNextQuestion(quiz) {
         write(`Question: ${quiz.question}\nYour answer: `);
         return read();
