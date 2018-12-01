@@ -30,5 +30,5 @@ export default ({ write, read }) =>
         write(`Congratulations, ${playerName}!\n`);
       }
       return true;
-    }, true);
+    }, null);
   };
