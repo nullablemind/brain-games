@@ -10,8 +10,10 @@ export default ({ write, read }) => ({ description, generatorQuiz, attempts = 3 
   const playerName = read();
   write(`Hello, ${playerName}!\n\n`);
 
-  for (let i = 1; i <= attempts; i++) {
-    const { question, solution } = listOfQuiz[i - 1];
+  listOfQuiz.reduce((lastAnsweredCorrectly, { question, solution }, index) => {
+    if (lastAnsweredCorrectly === false) {
+      return false;
+    }
 
     write(`Question: ${question}\nYour answer: `);
     const playerResponse = read();
@@ -19,13 +21,15 @@ export default ({ write, read }) => ({ description, generatorQuiz, attempts = 3 
     if (playerResponse !== solution) {
       write(`\n"${playerResponse}" is wrong answer ;(. Correct answer was "${solution}".\n`);
       write(`Let's try again, ${playerName}!`);
-      break;
+      return false;
     }
 
     write('Correct!\n\n');
 
-    if (i === attempts) {
+    const attempt = index + 1;
+    if (attempt === attempts) {
       write(`Congratulations, ${playerName}!\n`);
     }
-  }
+    return true;
+  }, true);
 };
