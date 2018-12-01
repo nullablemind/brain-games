@@ -1,4 +1,4 @@
-import { setAnswer, createListOfQuiz } from './createListOfQuiz';
+import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 
 export default ({ write, read }) =>
   ({ description, generatorQuiz, attempts = 3 }) => {
@@ -16,10 +16,9 @@ export default ({ write, read }) =>
 
       write(`Question: ${quiz.question}\nYour answer: `);
       const playerAnswer = read();
-      const quizWithAnswer = setAnswer(quiz, playerAnswer);
 
-      if (quizWithAnswer.isCorrect) {
-        write(`\n"${quizWithAnswer.answer}" is wrong answer ;(. Correct answer was "${quizWithAnswer.solution}".\n`);
+      if (!isRightAnswer(quiz, playerAnswer)) {
+        write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
         write(`Let's try again, ${playerName}!\n`);
         return false;
       }
