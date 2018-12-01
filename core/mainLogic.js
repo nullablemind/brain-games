@@ -1,4 +1,4 @@
-export default ({ response: write, request: read, description, listOfQuiz }) => {
+export default ({ write, read, description, listOfQuiz }) => {
   write('Welcome to the Brain Games!\n');
   write(`Quiz description: ${description}\n\n`);
 
