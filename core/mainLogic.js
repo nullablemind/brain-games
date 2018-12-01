@@ -10,9 +10,7 @@ export default ({ write, read }) =>
     write(`Hello, ${playerName}!\n\n`);
 
     createListOfQuiz(generatorQuiz, attempts).reduce((lastAnsweredCorrectly, quiz, index) => {
-      if (lastAnsweredCorrectly === false) {
-        return false;
-      }
+      if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
 
       write(`Question: ${quiz.question}\nYour answer: `);
       const playerAnswer = read();
