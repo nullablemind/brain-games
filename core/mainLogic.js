@@ -10,9 +10,8 @@ export default ({ write, read }) => ({ description, generatorQuiz, attempts = 3 
   const playerName = read();
   write(`Hello, ${playerName}!\n\n`);
 
-  const indexOfLastQuiz = listOfQuiz.length - 1;
-  for (let i = 0; i < listOfQuiz.length; i++) {
-    const { question, solution } = listOfQuiz[i];
+  for (let i = 1; i <= attempts; i++) {
+    const { question, solution } = listOfQuiz[i - 1];
 
     write(`Question: ${question}\nYour answer: `);
     const playerResponse = read();
@@ -25,7 +24,7 @@ export default ({ write, read }) => ({ description, generatorQuiz, attempts = 3 
 
     write('Correct!\n\n');
 
-    if (i === indexOfLastQuiz) {
+    if (i === attempts) {
       write(`Congratulations, ${playerName}!\n`);
     }
   }
