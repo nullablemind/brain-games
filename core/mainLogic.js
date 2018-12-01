@@ -1,4 +1,8 @@
-export default ({ write, read, description, listOfQuiz }) => {
+import createListOfQuiz from './createListOfQuiz';
+
+export default ({ write, read }) => ({ description, generatorQuiz, attempts = 3 }) => {
+  const listOfQuiz = createListOfQuiz(generatorQuiz, attempts);
+
   write('Welcome to the Brain Games!\n');
   write(`Quiz description: ${description}\n\n`);
 
