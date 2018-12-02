@@ -1,10 +1,7 @@
 import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 
-const quiz = args => {
+const quiz = handlers => catridge => {
   const {
-    generatorQuiz,
-    attempts,
-    description,
     onWelcome = () => {},
     onGetPlayerName = () => {},
     onNextQuestion = () => {},
@@ -12,7 +9,13 @@ const quiz = args => {
     onRightAnswer = () => {},
     onWinQuiz = () => {},
     onLoseQuiz = () => {},
-  } = args;
+  } = handlers;
+
+  const {
+    generatorQuiz,
+    attempts = 3,
+    description,
+  } = catridge;
 
   onWelcome({ description });
 
@@ -41,36 +44,31 @@ const quiz = args => {
 };
 
 export default ({ write, read }) =>
-  ({ description, generatorQuiz, attempts = 3 }) => {
-    quiz({
-      generatorQuiz,
-      attempts,
-      description,
-      onWelcome({ description }) {
-        write('Welcome to the Brain Games!\n');
-        write(`Quiz description: ${description}\n\n`);
-      },
-      onGetPlayerName() {
-        write('May I have your name? ');
-        const playerName = read();
-        write(`Hello, ${playerName}!\n\n`);
-        return playerName;
-      },
-      onNextQuestion(quiz) {
-        write(`Question: ${quiz.question}\nYour answer: `);
-        return read();
-      },
-      onRightAnswer() {
-        write('Correct!\n\n');
-      },
-      onWinQuiz({ playerName }) {
-        write(`Congratulations, ${playerName}!\n`);
-      },
-      onWrongAnswer(quiz, playerAnswer) {
-        write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
-      },
-      onLoseQuiz({ playerName }) {
-        write(`Let's try again, ${playerName}!\n`);
-      },
-    });
-  };
+  quiz({
+    onWelcome({ description }) {
+      write('Welcome to the Brain Games!\n');
+      write(`Quiz description: ${description}\n\n`);
+    },
+    onGetPlayerName() {
+      write('May I have your name? ');
+      const playerName = read();
+      write(`Hello, ${playerName}!\n\n`);
+      return playerName;
+    },
+    onNextQuestion(quiz) {
+      write(`Question: ${quiz.question}\nYour answer: `);
+      return read();
+    },
+    onRightAnswer() {
+      write('Correct!\n\n');
+    },
+    onWinQuiz({ playerName }) {
+      write(`Congratulations, ${playerName}!\n`);
+    },
+    onWrongAnswer(quiz, playerAnswer) {
+      write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
+    },
+    onLoseQuiz({ playerName }) {
+      write(`Let's try again, ${playerName}!\n`);
+    },
+  });
