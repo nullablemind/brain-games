@@ -1,4 +1,4 @@
-import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
+import { generateProblems, isRightAnswer } from './createListOfQuiz';
 
 export default handlers => catridge => {
   const {
@@ -17,7 +17,7 @@ export default handlers => catridge => {
     generatorQuiz,
     attempts = 3,
   } = catridge;
-  const problems = createListOfQuiz(generatorQuiz, attempts);
+  const problems = generateProblems(generatorQuiz, attempts);
 
   onIntro(catridge.description);
 
