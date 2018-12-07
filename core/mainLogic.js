@@ -21,7 +21,7 @@ export default handlers => catridge => {
   onWelcomePlayer(playerName);
 
   const isWonQuiz = problems.reduce((lastAnswerWasRight, { solution, description }) => {
-    if (lastAnswerWasRight === false) return lastAnswerWasRight;
+    if (!lastAnswerWasRight) return lastAnswerWasRight;
 
     onShowProblem(description);
     const answer = onReplyToProblem();
