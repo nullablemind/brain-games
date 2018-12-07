@@ -15,6 +15,8 @@ export default ({ write, read }) =>
     },
     onShowProblem(question) {
       write(`Question: ${question}\nYour answer: `);
+    },
+    onReplyToProblem() {
       return read();
     },
     onRightAnswer() {

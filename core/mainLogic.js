@@ -5,6 +5,7 @@ export default handlers => catridge => {
     onWelcome = () => {},
     onMeet = () => {},
     onShowProblem = () => {},
+    onReplyToProblem = () => {},
     onWrongAnswer = () => {},
     onRightAnswer = () => {},
     onWinQuiz = () => {},
@@ -24,7 +25,8 @@ export default handlers => catridge => {
   createListOfQuiz(generatorQuiz, attempts).reduce((lastAnsweredCorrectly, quiz, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
 
-    const answer = onShowProblem(quiz.question);
+    onShowProblem(quiz.question);
+    const answer = onReplyToProblem();
 
     if (!isRightAnswer(quiz, answer)) {
       onWrongAnswer(quiz, answer);
