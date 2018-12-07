@@ -24,14 +24,14 @@ export default handlers => catridge => {
   const playerName = onMeet();
   onWelcomePlayer(playerName);
 
-  problems.reduce((lastAnsweredCorrectly, quiz, index) => {
+  problems.reduce((lastAnsweredCorrectly, problem, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
 
-    onShowProblem(quiz.question);
+    onShowProblem(problem.question);
     const answer = onReplyToProblem();
 
-    if (!isRightAnswer(quiz, answer)) {
-      onWrongAnswer(answer, quiz.solution);
+    if (!isRightAnswer(problem, answer)) {
+      onWrongAnswer(answer, problem.solution);
       onLoseQuiz(playerName);
 
       return false;
