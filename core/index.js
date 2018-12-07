@@ -3,7 +3,7 @@ import createListOfQuiz from './createListOfQuiz';
 
 export default ({ write, read }) =>
   quiz({
-    onIntro({ description }) {
+    onIntro(description) {
       write('Welcome to the Brain Games!\n');
       write(`Quiz description: ${description}\n\n`);
     },

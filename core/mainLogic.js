@@ -19,7 +19,7 @@ export default handlers => catridge => {
     description,
   } = catridge;
 
-  onIntro({ description });
+  onIntro(description);
 
   const playerName = onMeet();
   onWelcomePlayer(playerName);
