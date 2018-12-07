@@ -37,7 +37,7 @@ export default handlers => catridge => {
       return false;
     }
 
-    onRightAnswer(quiz);
+    onRightAnswer();
 
     const attempt = index + 1;
     if (attempt === attempts) {
