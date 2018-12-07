@@ -1,6 +1,6 @@
 import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 
-const quiz = handlers => catridge => {
+export default handlers => catridge => {
   const {
     onWelcome = () => {},
     onGetPlayerName = () => {},
@@ -42,33 +42,3 @@ const quiz = handlers => catridge => {
     return true;
   }, null);
 };
-
-export default ({ write, read }) =>
-  quiz({
-    onWelcome({ description }) {
-      write('Welcome to the Brain Games!\n');
-      write(`Quiz description: ${description}\n\n`);
-    },
-    onGetPlayerName() {
-      write('May I have your name? ');
-      const playerName = read();
-      write(`Hello, ${playerName}!\n\n`);
-      return playerName;
-    },
-    onNextQuestion(quiz) {
-      write(`Question: ${quiz.question}\nYour answer: `);
-      return read();
-    },
-    onRightAnswer() {
-      write('Correct!\n\n');
-    },
-    onWinQuiz({ playerName }) {
-      write(`Congratulations, ${playerName}!\n`);
-    },
-    onWrongAnswer(quiz, playerAnswer) {
-      write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
-    },
-    onLoseQuiz({ playerName }) {
-      write(`Let's try again, ${playerName}!\n`);
-    },
-  });
