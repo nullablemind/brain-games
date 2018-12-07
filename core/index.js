@@ -13,8 +13,8 @@ export default ({ write, read }) =>
       write(`Hello, ${playerName}!\n\n`);
       return playerName;
     },
-    onNextQuestion(quiz) {
-      write(`Question: ${quiz.question}\nYour answer: `);
+    onShowProblem(question) {
+      write(`Question: ${question}\nYour answer: `);
       return read();
     },
     onRightAnswer() {
