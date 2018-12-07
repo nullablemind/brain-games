@@ -14,8 +14,8 @@ export default ({ write, read }) =>
     onWelcomePlayer(playerName) {
       write(`Hello, ${playerName}!\n\n`);
     },
-    onShowProblem(question) {
-      write(`Question: ${question}\nYour answer: `);
+    onShowProblem(problem) {
+      write(`Problem: ${problem}\nYour answer: `);
     },
     onReplyToProblem() {
       return read();
