@@ -23,7 +23,7 @@ export default handlers => catridge => {
   problems.reduce((lastAnsweredCorrectly, problem, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
 
-    onShowProblem(problem.question);
+    onShowProblem(problem.description);
     const answer = onReplyToProblem();
 
     if (!isRightAnswer(problem, answer)) {

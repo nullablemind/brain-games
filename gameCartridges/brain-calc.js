@@ -22,9 +22,9 @@ export default {
     const number1 = getRandomNumber(1, 100);
     const number2 = getRandomNumber(1, 100);
 
-    const question = `${number1} ${arithmeticSign} ${number2}`;
+    const description = `${number1} ${arithmeticSign} ${number2}`;
     const solution = calc(arithmeticSign, number1, number2);
 
-    return { question, solution };
+    return { description, solution };
   },
 };

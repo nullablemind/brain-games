@@ -12,9 +12,9 @@ export default {
     const number2 = getRandomNumber(1, 100);
     const gcd = getGCD(number1, number2);
 
-    const question = `${number1} ${number2}`;
+    const description = `${number1} ${number2}`;
     const solution = gcd;
 
-    return { question, solution };
+    return { description, solution };
   },
 };

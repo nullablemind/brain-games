@@ -51,9 +51,9 @@ export default {
   description: 'Balance the given number.',
   generatorProblem() {
     const number = getRandomNumber(100, 10000);
-    const question = number.toString();
-    const solution = quickSort(balanceNumber(question));
+    const description = number.toString();
+    const solution = quickSort(balanceNumber(description));
 
-    return { question, solution };
+    return { description, solution };
   },
 };

@@ -23,9 +23,9 @@ export default {
     const copySequence = sequence.slice();
     copySequence[indexHideNumber] = '..';
 
-    const string = copySequence.join(' ');
-    const answer = sequence[indexHideNumber];
+    const description = copySequence.join(' ');
+    const solution = sequence[indexHideNumber];
 
-    return { string, answer };
+    return { description, solution };
   },
 };
