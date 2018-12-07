@@ -31,7 +31,7 @@ export default handlers => catridge => {
     const answer = onReplyToProblem();
 
     if (!isRightAnswer(quiz, answer)) {
-      onWrongAnswer(answer, quiz);
+      onWrongAnswer(answer, quiz.solution);
       onLoseQuiz(playerName);
 
       return false;
