@@ -23,7 +23,7 @@ export default ({ write, read }) =>
     onRightAnswer() {
       write('Correct!\n\n');
     },
-    onWrongAnswer(quiz, playerAnswer) {
+    onWrongAnswer(playerAnswer, quiz) {
       write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
     },
     onWonQuiz(playerName) {
