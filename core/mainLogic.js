@@ -32,7 +32,7 @@ export default handlers => catridge => {
 
     if (!isRightAnswer(quiz, answer)) {
       onWrongAnswer(quiz, answer);
-      onLoseQuiz({ playerName });
+      onLoseQuiz(playerName);
 
       return false;
     }
@@ -41,7 +41,7 @@ export default handlers => catridge => {
 
     const attempt = index + 1;
     if (attempt === attempts) {
-      onWonQuiz({ playerName });
+      onWonQuiz(playerName);
     }
     return true;
   }, null);
