@@ -23,7 +23,7 @@ export default ({ write, read }) =>
       write('Correct!\n\n');
     },
     onWinQuiz({ playerName }) {
-      write(`Congratulations, ${playerName}!\n`);
+      write(`Congratulations, ${playerName}! You won.\n`);
     },
     onWrongAnswer(quiz, playerAnswer) {
       write(`\n"${playerAnswer}" is wrong answer ;(. Correct answer was "${quiz.solution}".\n`);
