@@ -24,13 +24,13 @@ export default handlers => catridge => {
     if (!lastAnswerWasRight) return lastAnswerWasRight;
 
     onShowProblem(description);
-    const answer = onReplyToProblem();
+    const playerAnswer = onReplyToProblem();
 
-    isRightAnswer(solution, answer)
+    isRightAnswer(solution, playerAnswer)
       ? onRightAnswer()
-      : onWrongAnswer(answer, solution);
+      : onWrongAnswer(playerAnswer, solution);
 
-    return isRightAnswer(solution, answer);
+    return isRightAnswer(solution, playerAnswer);
   }, null);
 
   isWonQuiz
