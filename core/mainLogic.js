@@ -7,8 +7,8 @@ export default handlers => catridge => {
     onWelcomePlayer = () => {},
     onShowProblem = () => {},
     onReplyToProblem = () => {},
-    onWrongAnswer = () => {},
     onRightAnswer = () => {},
+    onWrongAnswer = () => {},
     onWonQuiz = () => {},
     onLoseQuiz = () => {},
   } = handlers;
