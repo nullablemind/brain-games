@@ -20,8 +20,8 @@ export default handlers => catridge => {
   const playerName = onMeet();
   onWelcomePlayer(playerName);
 
-  problems.reduce((lastAnsweredCorrectly, problem, index) => {
-    if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
+  problems.reduce((lastAnswerWasRight, problem, index) => {
+    if (lastAnswerWasRight === false) return lastAnswerWasRight;
 
     onShowProblem(problem.description);
     const answer = onReplyToProblem();
