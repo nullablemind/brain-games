@@ -1,4 +1,4 @@
-import { generateProblems, isRightAnswer } from './lib/problem';
+import { generateProblems, isEquals } from './lib/problem';
 
 export default handlers => catridge => {
   const {
@@ -26,11 +26,13 @@ export default handlers => catridge => {
     onShowProblem(description);
     const playerAnswer = onReplyToProblem();
 
-    isRightAnswer(playerAnswer, solution)
-      ? onRightAnswer()
+    const isRightAnswer = isEquals(playerAnswer, solution);
+
+    isRightAnswer
+      ? onRightAnswer(playerAnswer, solution)
       : onWrongAnswer(playerAnswer, solution);
 
-    return isRightAnswer(playerAnswer, solution);
+    return isRightAnswer;
   }, null);
 
   isWonQuiz
