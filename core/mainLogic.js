@@ -20,19 +20,17 @@ export default handlers => catridge => {
   const playerName = onMeet();
   onWelcomePlayer(playerName);
 
-  const isWonQuiz = problems.reduce((lastAnswerWasRight, problem, index) => {
+  const isWonQuiz = problems.reduce((lastAnswerWasRight, problem) => {
     if (lastAnswerWasRight === false) return lastAnswerWasRight;
 
     onShowProblem(problem.description);
     const answer = onReplyToProblem();
 
-    if (!isRightAnswer(problem, answer)) {
-      onWrongAnswer(answer, problem.solution);
-      return false;
-    }
+    isRightAnswer(problem, answer)
+      ? onRightAnswer()
+      : onWrongAnswer(answer, problem.solution);
 
-    onRightAnswer();
-    return true;
+    return isRightAnswer(problem, answer);
   }, null);
 
   isWonQuiz
