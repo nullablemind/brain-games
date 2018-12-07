@@ -2,7 +2,7 @@ import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 
 export default handlers => catridge => {
   const {
-    onWelcome = () => {},
+    onIntro = () => {},
     onMeet = () => {},
     onShowProblem = () => {},
     onReplyToProblem = () => {},
@@ -18,7 +18,7 @@ export default handlers => catridge => {
     description,
   } = catridge;
 
-  onWelcome({ description });
+  onIntro({ description });
 
   const playerName = onMeet();
 
