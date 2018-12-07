@@ -20,7 +20,7 @@ export default handlers => catridge => {
   const playerName = onMeet();
   onWelcomePlayer(playerName);
 
-  problems.reduce((lastAnswerWasRight, problem, index) => {
+  const isWonQuiz = problems.reduce((lastAnswerWasRight, problem, index) => {
     if (lastAnswerWasRight === false) return lastAnswerWasRight;
 
     onShowProblem(problem.description);
@@ -28,17 +28,14 @@ export default handlers => catridge => {
 
     if (!isRightAnswer(problem, answer)) {
       onWrongAnswer(answer, problem.solution);
-      onLoseQuiz(playerName);
-
       return false;
     }
 
     onRightAnswer();
-
-    const attempt = index + 1;
-    if (attempt === problems.length) {
-      onWonQuiz(playerName);
-    }
     return true;
   }, null);
+
+  isWonQuiz
+    ? onWonQuiz(playerName)
+    : onLoseQuiz(playerName);
 };
