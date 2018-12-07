@@ -13,11 +13,7 @@ export default handlers => catridge => {
     onLoseQuiz = () => {},
   } = handlers;
 
-  const {
-    generatorQuiz,
-    attempts = 3,
-  } = catridge;
-  const problems = generateProblems(generatorQuiz, attempts);
+  const problems = generateProblems(catridge);
 
   onIntro(catridge.description);
 
@@ -40,7 +36,7 @@ export default handlers => catridge => {
     onRightAnswer();
 
     const attempt = index + 1;
-    if (attempt === attempts) {
+    if (attempt === problems.length) {
       onWonQuiz(playerName);
     }
     return true;
