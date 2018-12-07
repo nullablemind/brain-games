@@ -49,7 +49,7 @@ const quickSort = (numbers) => {
 
 export default {
   description: 'Balance the given number.',
-  generatorQuiz() {
+  generatorProblem() {
     const number = getRandomNumber(100, 10000);
     const question = number.toString();
     const solution = quickSort(balanceNumber(question));

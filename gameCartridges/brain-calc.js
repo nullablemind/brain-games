@@ -17,7 +17,7 @@ const calc = (arithmeticSign, number1, number2) => {
 
 export default {
   description: 'What is the result of the expression?',
-  generatorQuiz() {
+  generatorProblem() {
     const arithmeticSign = randomArithmeticSign();
     const number1 = getRandomNumber(1, 100);
     const number2 = getRandomNumber(1, 100);

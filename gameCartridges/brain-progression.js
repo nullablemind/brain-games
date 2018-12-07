@@ -15,7 +15,7 @@ const generateArithmeticSequence = (length) => {
 
 export default {
   description: 'What number is missing in this progression?',
-  generatorQuiz() {
+  generatorProblem() {
     const lengthSequence = 10;
     const indexHideNumber = getRandomNumber(1, lengthSequence);
     const sequence = generateArithmeticSequence(lengthSequence);

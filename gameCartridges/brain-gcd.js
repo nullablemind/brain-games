@@ -7,7 +7,7 @@ const getGCD = (number1, number2) =>
 
 export default {
   description: 'Find the greatest common divisor of given numbers.',
-  generatorQuiz() {
+  generatorProblem() {
     const number1 = getRandomNumber(1, 100);
     const number2 = getRandomNumber(1, 100);
     const gcd = getGCD(number1, number2);
