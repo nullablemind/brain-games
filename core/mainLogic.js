@@ -1,4 +1,4 @@
-import { generateProblems, isRightAnswer } from './createListOfQuiz';
+import { generateProblems, isRightAnswer } from './lib/problem';
 
 export default handlers => catridge => {
   const {
