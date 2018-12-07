@@ -1,5 +1,4 @@
 import quiz from './mainLogic';
-import createListOfQuiz from './createListOfQuiz';
 
 export default ({ write, read }) =>
   quiz({
