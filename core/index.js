@@ -9,9 +9,10 @@ export default ({ write, read }) =>
     },
     onMeet() {
       write('May I have your name? ');
-      const playerName = read();
+      return read();
+    },
+    onWelcomePlayer(playerName) {
       write(`Hello, ${playerName}!\n\n`);
-      return playerName;
     },
     onShowProblem(question) {
       write(`Question: ${question}\nYour answer: `);

@@ -4,6 +4,7 @@ export default handlers => catridge => {
   const {
     onIntro = () => {},
     onMeet = () => {},
+    onWelcomePlayer = () => {},
     onShowProblem = () => {},
     onReplyToProblem = () => {},
     onWrongAnswer = () => {},
@@ -21,6 +22,7 @@ export default handlers => catridge => {
   onIntro({ description });
 
   const playerName = onMeet();
+  onWelcomePlayer(playerName);
 
   createListOfQuiz(generatorQuiz, attempts).reduce((lastAnsweredCorrectly, quiz, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;
