@@ -8,7 +8,7 @@ export default handlers => catridge => {
     onReplyToProblem = () => {},
     onWrongAnswer = () => {},
     onRightAnswer = () => {},
-    onWinQuiz = () => {},
+    onWonQuiz = () => {},
     onLoseQuiz = () => {},
   } = handlers;
 
@@ -39,7 +39,7 @@ export default handlers => catridge => {
 
     const attempt = index + 1;
     if (attempt === attempts) {
-      onWinQuiz({ playerName });
+      onWonQuiz({ playerName });
     }
     return true;
   }, null);
