@@ -3,7 +3,7 @@ import { createListOfQuiz, isRightAnswer } from './createListOfQuiz';
 export default handlers => catridge => {
   const {
     onWelcome = () => {},
-    onGetPlayerName = () => {},
+    onMeet = () => {},
     onNextQuestion = () => {},
     onWrongAnswer = () => {},
     onRightAnswer = () => {},
@@ -19,7 +19,7 @@ export default handlers => catridge => {
 
   onWelcome({ description });
 
-  const playerName = onGetPlayerName();
+  const playerName = onMeet();
 
   createListOfQuiz(generatorQuiz, attempts).reduce((lastAnsweredCorrectly, quiz, index) => {
     if (lastAnsweredCorrectly === false) return lastAnsweredCorrectly;

@@ -7,7 +7,7 @@ export default ({ write, read }) =>
       write('Welcome to the Brain Games!\n');
       write(`Quiz description: ${description}\n\n`);
     },
-    onGetPlayerName() {
+    onMeet() {
       write('May I have your name? ');
       const playerName = read();
       write(`Hello, ${playerName}!\n\n`);
