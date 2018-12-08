@@ -1,8 +1,8 @@
-import createQuiz from './mainLogic';
+import useCase from './useCase';
 import { generateProblems } from './lib/problem';
 
 export default ({ write, read }) => cartridge =>
-  createQuiz({
+  useCase({
     quizDescription: cartridge.description,
     problems: generateProblems(cartridge),
     handlers: {
