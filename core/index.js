@@ -1,7 +1,7 @@
-import quiz from './mainLogic';
+import createQuiz from './mainLogic';
 
 export default ({ write, read }) =>
-  quiz({
+  createQuiz({
     onIntro(description) {
       write('Welcome to the Brain Games!\n');
       write(`Quiz description: ${description}\n\n`);
