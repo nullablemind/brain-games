@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import runGame from '..';
-import brainBalance from '../gameCartridges/brain-balance';
+import brainBalance from '../cartridges/brain-balance';
 
 runGame(brainBalance);
