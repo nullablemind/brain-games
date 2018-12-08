@@ -1,5 +1,5 @@
 import useCase from './useCase';
-import { generateProblems } from './lib/problem';
+import { generateProblems } from './lib';
 
 export default ({ write, read }) => cartridge =>
   useCase({

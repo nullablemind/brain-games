@@ -1,4 +1,4 @@
-import { isEquals } from './lib/problem';
+import { isEquals } from './lib';
 
 export default ({ quizDescription, problems, handlers }) => {
   const {
