@@ -1,4 +1,4 @@
 import createGamePlatform from './core';
-import config from './views/console';
+import console from './io/console';
 
-export default createGamePlatform(config);
+export default createGamePlatform(console);
