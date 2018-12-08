@@ -1,6 +1,6 @@
-import { generateProblems, isEquals } from './lib/problem';
+import { isEquals } from './lib/problem';
 
-export default handlers => catridge => {
+export default ({ quizDescription, problems, handlers }) => {
   const {
     onIntro = () => {},
     onMeet = () => {},
@@ -13,9 +13,7 @@ export default handlers => catridge => {
     onLoseQuiz = () => {},
   } = handlers;
 
-  const problems = generateProblems(catridge);
-
-  onIntro(catridge.description);
+  onIntro(quizDescription);
 
   const playerName = onMeet();
   onWelcomePlayer(playerName);
