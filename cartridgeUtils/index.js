@@ -1,7 +1,7 @@
-const getRandomNumber = (min, max) =>
+export const getRandomNumber = (min, max) =>
   Math.floor(min + (Math.random() * ((max + 1) - min)));
 
-const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) => {
+export const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) => {
   switch (generatorRandomNumber(1, 4)) {
     case 1:
       return '+';
@@ -16,7 +16,5 @@ const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) => {
   }
 };
 
-const isOdd = number =>
+export const isOdd = number =>
   Math.abs(number % 2) === 1;
-
-export { getRandomNumber, randomArithmeticSign, isOdd }; // eslint-disable-line
