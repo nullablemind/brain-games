@@ -13,9 +13,8 @@ export default ({
     onWrongAnswer = () => {},
     onWonQuiz = () => {},
     onLoseQuiz = () => {},
-  }
+  },
 }) => {
-
   onIntro(quizDescription);
 
   const playerName = onMeet();

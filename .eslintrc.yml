@@ -21,3 +21,6 @@ extends:
 rules:
   no-underscore-dangle: 0
   no-plusplus: 0
+  no-unused-expressions:
+    - error
+    - allowTernary: true
