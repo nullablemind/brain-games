@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../cartridgeUtils';
+import { getRandomNumber } from '../lib';
 
 const generateArithmeticSequence = (length) => {
   const firstMember = getRandomNumber(1, 100);

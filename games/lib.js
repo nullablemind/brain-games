@@ -3,16 +3,16 @@ export const getRandomNumber = (min, max) =>
 
 export const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) => {
   switch (generatorRandomNumber(1, 4)) {
-    case 1:
-      return '+';
-    case 2:
-      return '-';
-    case 3:
-      return '*';
-    case 4:
-      return '/';
-    default:
-      throw Error('function generatorRandomNumber should return number from 1 to 4');
+  case 1:
+    return '+';
+  case 2:
+    return '-';
+  case 3:
+    return '*';
+  case 4:
+    return '/';
+  default:
+    throw Error('function generatorRandomNumber should return number from 1 to 4');
   }
 };
 

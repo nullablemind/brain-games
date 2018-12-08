@@ -1,4 +1,4 @@
-import { getRandomNumber, randomArithmeticSign } from '../cartridgeUtils';
+import { getRandomNumber, randomArithmeticSign } from '../lib';
 
 const calc = (arithmeticSign, number1, number2) => {
   switch (arithmeticSign) {

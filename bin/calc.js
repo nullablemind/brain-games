@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import runGame from '..';
-import calc from '../cartridges/calc';
+import calc from '../games/cartridges/calc';
 
 runGame(calc);

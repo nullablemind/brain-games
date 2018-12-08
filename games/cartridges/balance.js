@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../cartridgeUtils';
+import { getRandomNumber } from '../lib';
 
 const replaceChar = (string, index, newChar) => {
   let newString = '';
