@@ -33,7 +33,7 @@ export default handlers => catridge => {
       : onWrongAnswer(playerAnswer, solution);
 
     return isRightAnswer;
-  }, null);
+  }, true);
 
   isWonQuiz
     ? onWonQuiz(playerName)
