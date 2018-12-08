@@ -5,6 +5,6 @@
 
 `make game-list` - Получить список игр
 
-`make run G=brain-even` - Запуск игры brain-event (не нужно указывать расширение .js)
+`make run G=even` - Запуск игры event (не нужно указывать расширение .js)
 
 `make publish` - Публикация игр
