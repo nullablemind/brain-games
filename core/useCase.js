@@ -1,7 +1,9 @@
 import { isEquals } from './lib';
 
-export default ({ quizDescription, problems, handlers }) => {
-  const {
+export default ({
+  quizDescription,
+  problems,
+  handlers: {
     onIntro = () => {},
     onMeet = () => {},
     onWelcomePlayer = () => {},
@@ -11,7 +13,8 @@ export default ({ quizDescription, problems, handlers }) => {
     onWrongAnswer = () => {},
     onWonQuiz = () => {},
     onLoseQuiz = () => {},
-  } = handlers;
+  }
+}) => {
 
   onIntro(quizDescription);
 
