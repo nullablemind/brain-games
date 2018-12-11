@@ -32,7 +32,7 @@ export default ({ write, read }) => cartridge =>
       onWonQuiz(playerName) {
         write(`Congratulations, ${playerName}! You won.\n`);
       },
-      onLoseQuiz(playerName) {
+      onLostQuiz(playerName) {
         write(`Let's try again, ${playerName}!\n`);
       },
     },
