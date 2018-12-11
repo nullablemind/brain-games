@@ -12,7 +12,7 @@ export default ({
     onRightAnswer = () => {},
     onWrongAnswer = () => {},
     onWonQuiz = () => {},
-    onLoseQuiz = () => {},
+    onLostQuiz = () => {},
   },
 }) => {
   onIntro(quizDescription);
@@ -37,5 +37,5 @@ export default ({
 
   isWonQuiz
     ? onWonQuiz(playerName)
-    : onLoseQuiz(playerName);
+    : onLostQuiz(playerName);
 };
