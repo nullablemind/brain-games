@@ -1,0 +1,65 @@
+const { describe } = require('riteway');
+const core = require('../src/core');
+const { catcherIO, speak, ask } = require('./helper');
+
+describe('core()', async (assert) => {
+  const playerWon = [
+    speak('Welcome to the Brain Games!\n'),
+    speak('Game desc 1\n\n'),
+    ask('May I have your name, please? '),
+    speak('Hello, Petya!\n\n'),
+    speak('Question: problem 1\n'),
+    ask('Your answer: '),
+    speak('Correct!\n'),
+    speak('Question: problem 2\n'),
+    ask('Your answer: '),
+    speak('Correct!\n'),
+    speak('Question: problem 3\n'),
+    ask('Your answer: '),
+    speak('Correct!\n'),
+    speak('Congratulations, Petya! You win'),
+  ];
+
+  const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
+  const game1 = {
+    desc: 'Game desc 1',
+    problems: [
+      { question: 'problem 1', rightAnswer: 'right answer 1' },
+      { question: 'problem 2', rightAnswer: 'right answer 2' },
+      { question: 'problem 3', rightAnswer: 'right answer 3' },
+    ],
+  };
+  assert({
+    given: 'config core',
+    should: 'return win scenario',
+    actual: catcherIO(game1, answers, core),
+    expected: playerWon,
+  });
+
+  const playerLost = [
+    speak('Welcome to the Brain Games!\n'),
+    speak('Game desc 2\n\n'),
+    ask('May I have your name, please? '),
+    speak('Hello, Vasya!\n\n'),
+    speak('Question: problem 1\n'),
+    ask('Your answer: '),
+    speak('"wrong answer" is wrong answer ;(. Correct answer was "right answer 1".\n'),
+    speak("Let's try again, Vasya!"),
+  ];
+
+  const game2 = {
+    desc: 'Game desc 2',
+    problems: [
+      { question: 'problem 1', rightAnswer: 'right answer 1' },
+      { question: 'problem 2', rightAnswer: 'right answer 2' },
+      { question: 'problem 3', rightAnswer: 'right answer 3' },
+    ],
+  };
+
+  assert({
+    given: 'config core',
+    should: 'return lost scenario',
+    actual: catcherIO(game2, ['Vasya', 'wrong answer'], core),
+    expected: playerLost,
+  });
+});

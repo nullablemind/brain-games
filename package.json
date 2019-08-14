@@ -6,6 +6,8 @@
     "brain-even": "./bin/brain-even.js"
   },
   "scripts": {
+    "test": "nyc riteway test/**/*.js | tap-nirvana",
+    "watch": "watch 'clear && npm run -s test' src test",
     "babel-node": "babel-node",
     "eslint": "eslint"
   },
@@ -32,5 +34,11 @@
     "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-import": "^2.14.0",
     "readline-sync": "^1.4.5"
+  },
+  "devDependencies": {
+    "nyc": "^14.1.1",
+    "riteway": "^6.1.0",
+    "tap-nirvana": "^1.1.0",
+    "watch": "^1.0.2"
   }
 }
