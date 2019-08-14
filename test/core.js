@@ -3,6 +3,7 @@ const core = require('../src/core');
 const { catcherIO, speak, ask } = require('./helper');
 
 describe('core()', async (assert) => {
+  const decoratedCore = catcherIO(core, { speak, ask });
   const playerWon = [
     speak('Welcome to the Brain Games!\n'),
     speak('Game desc 1\n\n'),
@@ -32,7 +33,7 @@ describe('core()', async (assert) => {
   assert({
     given: 'config core',
     should: 'return win scenario',
-    actual: catcherIO(game1, answers, core),
+    actual: decoratedCore(game1, answers),
     expected: playerWon,
   });
 
@@ -59,7 +60,7 @@ describe('core()', async (assert) => {
   assert({
     given: 'config core',
     should: 'return lost scenario',
-    actual: catcherIO(game2, ['Vasya', 'wrong answer'], core),
+    actual: decoratedCore(game2, ['Vasya', 'wrong answer']),
     expected: playerLost,
   });
 });

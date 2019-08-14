@@ -1,7 +1,7 @@
 const nextLine = '\n';
 const separator = '\n\n';
 
-module.exports = ({ speak, ask, game: { desc, problems } }) => {
+module.exports = ({ speak, ask }, { desc, problems }) => {
   speak(`Welcome to the Brain Games!${nextLine}`);
   speak(`${desc}${separator}`);
 

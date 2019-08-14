@@ -1,9 +1,7 @@
-const speak = text => `speak: ${text}`;
-const ask = text => `ask:   ${text}`;
-exports.speak = speak;
-exports.ask = ask;
+exports.speak = text => `speak: ${text}`;
+exports.ask = text => `ask:   ${text}`;
 
-exports.catcherIO = (game, answers, useCase) => {
+exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
   const dialog = [];
 
   const decoratedSpeak = text => {
@@ -18,11 +16,7 @@ exports.catcherIO = (game, answers, useCase) => {
     return answer;
   };
 
-  useCase({
-    speak: decoratedSpeak,
-    ask: decoratedAsk,
-    game,
-  });
+  core({ speak: decoratedSpeak, ask: decoratedAsk }, game);
 
   return dialog;
 };
