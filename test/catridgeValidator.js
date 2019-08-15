@@ -3,9 +3,9 @@ const catridgeValidator = require('../src/catridgeValidator');
 
 describe('catridgeValidator()', async (assert) => {
   const desc = 'catridge description';
-  const question = { desc: 'question desc', solution: 'solution' };
-  const questionWithoutDesc = { solution: 'solution' };
-  const questionWithoutSolution = { desc: 'question desc' };
+  const question = { problem: 'problem description', solution: 'solution' };
+  const questionWithoutProblem = { solution: 'solution' };
+  const questionWithoutSolution = { problem: 'problem description' };
   const generator = () => question;
   const emptyGenerator = () => undefined;
 
@@ -34,14 +34,14 @@ describe('catridgeValidator()', async (assert) => {
     given: 'catridge with empty generator',
     should: 'throw',
     actual: Try(catridgeValidator, { desc, generator: emptyGenerator }),
-    expected: new Error('generator must return { desc: \'question desc\', solution: \'solution\' }'),
+    expected: new Error('generator must return { problem: \'problem description\', solution: \'solution\' }'),
   });
 
   assert({
-    given: 'catridge with generator without desc',
+    given: 'catridge with generator without problem',
     should: 'throw',
-    actual: Try(catridgeValidator, { desc, generator: () => questionWithoutDesc }),
-    expected: new Error('generator must return question with property desc'),
+    actual: Try(catridgeValidator, { desc, generator: () => questionWithoutProblem }),
+    expected: new Error('generator must return question with property problem'),
   });
 
   assert({
