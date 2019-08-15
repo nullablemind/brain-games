@@ -1,11 +1,11 @@
 module.exports = ({ desc, generator }, amount = 3) => {
-  const problems = [];
+  const questions = [];
   for (let i = 0; i < amount; i += 1) {
-    problems.push(generator());
+    questions.push(generator());
   }
 
   return {
     desc,
-    problems,
+    questions,
   };
 };
