@@ -21,7 +21,7 @@ module.exports = ({ speak, ask }, { desc, questions }) => {
   }, true);
 
   if (isAllAnswersRight) {
-    speak('Congratulations, Petya! You win');
+    speak(`Congratulations, ${playerName}!`);
   } else {
     speak(`Let's try again, ${playerName}!`);
   }

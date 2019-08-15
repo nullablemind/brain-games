@@ -18,7 +18,7 @@ describe('core()', async (assert) => {
     speak('Question: problem 3\n'),
     ask('Your answer: '),
     speak('Correct!\n'),
-    speak('Congratulations, Petya! You win'),
+    speak('Congratulations, Petya!'),
   ];
 
   const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
