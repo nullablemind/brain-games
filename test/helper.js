@@ -12,7 +12,7 @@ const initReturnArgOneByOne = (args) => {
   };
 };
 
-exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
+exports.catcherIO = (app, { speak, ask }) => (game, answers) => {
   const dialog = [];
 
   const decoratedSpeak = (text) => {
@@ -25,7 +25,7 @@ exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
     return returnArgOneByOne();
   };
 
-  core(game)({ speak: decoratedSpeak, ask: decoratedAsk });
+  app(game)({ speak: decoratedSpeak, ask: decoratedAsk });
 
   return dialog;
 };
