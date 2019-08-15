@@ -24,10 +24,10 @@ describe('core()', async (assert) => {
   const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
   const game1 = {
     desc: 'Game desc 1',
-    problems: [
-      { question: 'problem 1', solution: 'right answer 1' },
-      { question: 'problem 2', solution: 'right answer 2' },
-      { question: 'problem 3', solution: 'right answer 3' },
+    questions: [
+      { problem: 'problem 1', solution: 'right answer 1' },
+      { problem: 'problem 2', solution: 'right answer 2' },
+      { problem: 'problem 3', solution: 'right answer 3' },
     ],
   };
   assert({
@@ -50,10 +50,10 @@ describe('core()', async (assert) => {
 
   const game2 = {
     desc: 'Game desc 2',
-    problems: [
-      { question: 'problem 1', solution: 'right answer 1' },
-      { question: 'problem 2', solution: 'right answer 2' },
-      { question: 'problem 3', solution: 'right answer 3' },
+    questions: [
+      { problem: 'problem 1', solution: 'right answer 1' },
+      { problem: 'problem 2', solution: 'right answer 2' },
+      { problem: 'problem 3', solution: 'right answer 3' },
     ],
   };
 
