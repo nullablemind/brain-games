@@ -1,6 +1,17 @@
 exports.speak = text => `speak: ${text}`;
 exports.ask = text => `ask:   ${text}`;
 
+const initReturnArgOneByOne = (args) => {
+  let count = 0;
+  return () => {
+    if (count > args.length) return undefined;
+
+    const arg = args[count];
+    count++;
+    return arg;
+  };
+};
+
 exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
   const dialog = [];
 
@@ -8,12 +19,10 @@ exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
     dialog.push(speak(text));
   };
 
-  let count = 0;
+  const returnArgOneByOne = initReturnArgOneByOne(answers);
   const decoratedAsk = (question) => {
-    const answer = answers[count];
-    count++;
     dialog.push(ask(question));
-    return answer;
+    return returnArgOneByOne();
   };
 
   core({ speak: decoratedSpeak, ask: decoratedAsk })(game);
