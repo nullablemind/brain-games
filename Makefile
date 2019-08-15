@@ -16,4 +16,7 @@ lint:
 test:
 		npm test
 
+watch:
+		npm run watch
+
 .PHONY: test
