@@ -2,32 +2,32 @@ const { describe } = require('riteway');
 const generateGame = require('../src/generateGame');
 
 describe('generateGame()', async (assert) => {
-  const desc = 'Game description';
-  const question = { problem: 'problem description', solution: 'answer' };
+  const description = 'Game description';
+  const problem = { description: 'problem description', solution: 'answer' };
   const catridge = {
-    desc,
-    generator: () => question,
+    description,
+    generator: () => problem,
   };
 
   const gameWithTwoQuestions = {
-    desc,
-    questions: [question, question],
+    description,
+    problems: [problem, problem],
   };
 
   assert({
-    given: 'catridge and two amount of question',
+    given: 'catridge and two amount of problem',
     should: 'return game',
     actual: generateGame(catridge, 2),
     expected: gameWithTwoQuestions,
   });
 
   const gameWithDefaultConfig = {
-    desc,
-    questions: [question, question, question],
+    description,
+    problems: [problem, problem, problem],
   };
 
   assert({
-    given: 'catridge and default 3 questions',
+    given: 'catridge and default 3 problems',
     should: 'return game',
     actual: generateGame(catridge),
     expected: gameWithDefaultConfig,
