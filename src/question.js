@@ -1,1 +1,1 @@
-module.exports = ({ desc, solution }) => ({ desc, solution: solution.toString() });
+module.exports = ({ problem, solution }) => ({ problem, solution: solution.toString() });
