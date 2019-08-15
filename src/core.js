@@ -1,4 +1,4 @@
-module.exports = ({ speak, ask }, { description: gameDesc, problems }) => {
+module.exports = ({ speak, ask }) => ({ description: gameDesc, problems }) => {
   speak('Welcome to the Brain Games!\n');
   speak(`${gameDesc}\n\n`);
 

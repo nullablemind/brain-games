@@ -16,7 +16,7 @@ exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
     return answer;
   };
 
-  core({ speak: decoratedSpeak, ask: decoratedAsk }, game);
+  core({ speak: decoratedSpeak, ask: decoratedAsk })(game);
 
   return dialog;
 };
