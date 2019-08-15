@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import runGame from '..';
-import balance from '../games/cartridges/balance';
+import balance from '../gameTemplates/cartridges/balance';
 
 runGame(balance);
