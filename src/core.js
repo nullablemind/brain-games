@@ -1,6 +1,6 @@
-module.exports = ({ speak, ask }, { desc, questions }) => {
+module.exports = ({ speak, ask }, { description, questions }) => {
   speak('Welcome to the Brain Games!\n');
-  speak(`${desc}\n\n`);
+  speak(`${description}\n\n`);
 
   const playerName = ask('May I have your name, please? ');
   speak(`Hello, ${playerName}!\n\n`);

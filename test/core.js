@@ -6,7 +6,7 @@ describe('core()', async (assert) => {
   const decoratedCore = catcherIO(core, { speak, ask });
   const playerWon = [
     speak('Welcome to the Brain Games!\n'),
-    speak('Game desc 1\n\n'),
+    speak('Game description 1\n\n'),
     ask('May I have your name, please? '),
     speak('Hello, Petya!\n\n'),
     speak('Question: problem 1\n'),
@@ -23,7 +23,7 @@ describe('core()', async (assert) => {
 
   const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
   const game1 = {
-    desc: 'Game desc 1',
+    description: 'Game description 1',
     questions: [
       { problem: 'problem 1', solution: 'right answer 1' },
       { problem: 'problem 2', solution: 'right answer 2' },
@@ -39,7 +39,7 @@ describe('core()', async (assert) => {
 
   const playerLost = [
     speak('Welcome to the Brain Games!\n'),
-    speak('Game desc 2\n\n'),
+    speak('Game description 2\n\n'),
     ask('May I have your name, please? '),
     speak('Hello, Vasya!\n\n'),
     speak('Question: problem 1\n'),
@@ -49,7 +49,7 @@ describe('core()', async (assert) => {
   ];
 
   const game2 = {
-    desc: 'Game desc 2',
+    description: 'Game description 2',
     questions: [
       { problem: 'problem 1', solution: 'right answer 1' },
       { problem: 'problem 2', solution: 'right answer 2' },
