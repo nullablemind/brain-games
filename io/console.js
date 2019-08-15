@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const write = msg => process.stdout.write(msg);
-const read = () => readlineSync.question();
+const speak = msg => process.stdout.write(msg);
+const ask = question => readlineSync.question(question);
 
-export default { write, read };
+export default { speak, ask };
