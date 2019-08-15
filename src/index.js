@@ -1,7 +1,7 @@
 const core = require('./core');
 const generateGame = require('./generateGame');
 
-module.exports = io => (gameTemplate) => {
+module.exports = (gameTemplate) => {
   const game = generateGame(gameTemplate);
-  core(io)(game);
+  return core(game);
 };
