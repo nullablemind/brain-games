@@ -4,7 +4,7 @@ const generateGame = require('../src/generateGame');
 describe('generateGame()', async (assert) => {
   const description = 'Game description';
   const problem = { description: 'problem description', solution: 'answer' };
-  const catridge = {
+  const gameTemplate = {
     description,
     generator: () => problem,
   };
@@ -15,9 +15,9 @@ describe('generateGame()', async (assert) => {
   };
 
   assert({
-    given: 'catridge and two amount of problem',
+    given: 'gameTemplate and two amount of problem',
     should: 'return game',
-    actual: generateGame(catridge, 2),
+    actual: generateGame(gameTemplate, 2),
     expected: gameWithTwoQuestions,
   });
 
@@ -27,9 +27,9 @@ describe('generateGame()', async (assert) => {
   };
 
   assert({
-    given: 'catridge and default 3 problems',
+    given: 'gameTemplate and default 3 problems',
     should: 'return game',
-    actual: generateGame(catridge),
+    actual: generateGame(gameTemplate),
     expected: gameWithDefaultConfig,
   });
 });
