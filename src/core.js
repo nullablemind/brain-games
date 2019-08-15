@@ -1,14 +1,14 @@
-module.exports = ({ speak, ask }, { description, questions }) => {
+module.exports = ({ speak, ask }, { description: gameDesc, questions }) => {
   speak('Welcome to the Brain Games!\n');
-  speak(`${description}\n\n`);
+  speak(`${gameDesc}\n\n`);
 
   const playerName = ask('May I have your name, please? ');
   speak(`Hello, ${playerName}!\n\n`);
 
-  const isAllAnswersRight = questions.reduce((isLastAnswerWasRight, { problem, solution }) => {
+  const isAllAnswersRight = questions.reduce((isLastAnswerWasRight, { description, solution }) => {
     if (!isLastAnswerWasRight) return false;
 
-    speak(`Question: ${problem}\n`);
+    speak(`Question: ${description}\n`);
     const playerAnswer = ask('Your answer: ');
 
     if (playerAnswer === solution) {
