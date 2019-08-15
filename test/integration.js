@@ -1,9 +1,9 @@
 const { describe } = require('riteway');
-const platform = require('../src');
+const { createTestPlatform } = require('../src');
 const { catcherIO, speak, ask } = require('./helper');
 
 describe('integration test', async (assert) => {
-  const decoratedPlatform = catcherIO(platform, { speak, ask });
+  const decoratedPlatform = catcherIO(createTestPlatform, { speak, ask });
   const playerWon = [
     speak('Welcome to the Brain Games!\n'),
     speak('Game description\n\n'),

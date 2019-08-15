@@ -1,4 +1,4 @@
 import console from './io/console';
-import createGamePlatform from './src';
+import { createPlatform } from './src';
 
-export default createGamePlatform(console);
+export default createPlatform(console);
