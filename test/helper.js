@@ -4,12 +4,12 @@ exports.ask = text => `ask:   ${text}`;
 exports.catcherIO = (core, { speak, ask }) => (game, answers) => {
   const dialog = [];
 
-  const decoratedSpeak = text => {
+  const decoratedSpeak = (text) => {
     dialog.push(speak(text));
   };
 
   let count = 0;
-  const decoratedAsk = question => {
+  const decoratedAsk = (question) => {
     const answer = answers[count];
     count++;
     dialog.push(ask(question));
