@@ -18,7 +18,7 @@ describe('core()', async (assert) => {
     speak('Question: problem 3\n'),
     ask('Your answer: '),
     speak('Correct!\n'),
-    speak('Congratulations, Petya!'),
+    speak('Congratulations, Petya!\n'),
   ];
 
   const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
@@ -45,7 +45,7 @@ describe('core()', async (assert) => {
     speak('Question: problem 1\n'),
     ask('Your answer: '),
     speak('"wrong answer" is wrong answer ;(. Correct answer was "right answer 1".\n'),
-    speak("Let's try again, Vasya!"),
+    speak("Let's try again, Vasya!\n"),
   ];
 
   const game2 = {

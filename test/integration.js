@@ -18,7 +18,7 @@ describe('integration test', async (assert) => {
     speak('Question: problem\n'),
     ask('Your answer: '),
     speak('Correct!\n'),
-    speak('Congratulations, Petya!'),
+    speak('Congratulations, Petya!\n'),
   ];
 
   const answers = ['Petya', 'right answer', 'right answer', 'right answer'];
