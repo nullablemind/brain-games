@@ -24,7 +24,7 @@ describe('core()', async (assert) => {
   const answers = ['Petya', 'right answer 1', 'right answer 2', 'right answer 3'];
   const game1 = {
     description: 'Game description 1',
-    questions: [
+    problems: [
       { description: 'problem 1', solution: 'right answer 1' },
       { description: 'problem 2', solution: 'right answer 2' },
       { description: 'problem 3', solution: 'right answer 3' },
@@ -50,7 +50,7 @@ describe('core()', async (assert) => {
 
   const game2 = {
     description: 'Game description 2',
-    questions: [
+    problems: [
       { description: 'problem 1', solution: 'right answer 1' },
       { description: 'problem 2', solution: 'right answer 2' },
       { description: 'problem 3', solution: 'right answer 3' },
