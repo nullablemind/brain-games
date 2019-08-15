@@ -1,13 +1,13 @@
 const isNil = value => value === undefined || value === null;
 
-module.exports = ({ desc, generator }) => {
-  if (isNil(desc)) throw Error('desc must be define');
-  if (isNil(generator)) throw Error('desc must be define');
-  if (isNil(generator())) throw Error('generator must return { problem: \'problem description\', solution: \'solution\' }');
-  const question = generator();
+module.exports = ({ description, generator }) => {
+  if (isNil(description)) throw Error('description must be define');
+  if (isNil(generator)) throw Error('description must be define');
 
-  if (isNil(question.problem)) throw Error('generator must return question with property problem');
-  if (isNil(question.solution)) throw Error('generator must return question with property solution');
+  const problem = generator();
+  if (isNil(problem)) throw Error('generator must return { description: \'problem description\', solution: \'solution\' }');
+  if (isNil(problem.description)) throw Error('generator must return question with property description');
+  if (isNil(problem.solution)) throw Error('generator must return question with property solution');
 
   return true;
 };
