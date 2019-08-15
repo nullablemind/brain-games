@@ -11,7 +11,7 @@ describe('generateGame()', async (assert) => {
 
   const gameWithTwoQuestions = {
     desc,
-    questions: [question, question],
+    problems: [question, question],
   };
 
   assert({
@@ -23,11 +23,11 @@ describe('generateGame()', async (assert) => {
 
   const gameWithDefaultConfig = {
     desc,
-    questions: [question, question, question],
+    problems: [question, question, question],
   };
 
   assert({
-    given: 'catridge and default 3 questions',
+    given: 'catridge and default 3 problems',
     should: 'return game',
     actual: generateGame(catridge),
     expected: gameWithDefaultConfig,
