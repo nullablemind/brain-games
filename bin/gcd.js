@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import runGame from '../src';
+import runGame from '..';
 import GCD from '../cartridges/gcd';
 
 runGame(GCD);

@@ -1,22 +1,31 @@
-# Hexlet project "Brain Games"
+# 🧠 Brain Games
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/8e7e6da2c62a19bc8a02/maintainability)](https://codeclimate.com/github/antonazgarovich/brain-games/maintainability)
 [![Build Status](https://travis-ci.org/antonazgarovich/brain-games.svg?branch=master)](https://travis-ci.org/antonazgarovich/brain-games)
 
-`make install` - Установка зависимостей
 
-`make run-balance` - Запуск игры balance
+#### Install:
 
-`make run-calc` - Запуск игры calc
+`make install` - install dependencies
 
-`make run-even` - Запуск игры even
+#### Run games:
 
-`make run-gcd` - Запуск игры gcd
+`make run-balance` - run game balance
 
-`make run-progression` - Запуск игры progression
+`make run-calc` - run game calc
 
-`make test` - Запуск тестов
+`make run-even` - run game even
 
-`make publish` - Публикация игр
+`make run-gcd` - run game gcd
 
-[hexlet.io](http://hexlet.io/)
+`make run-progression` - run game progression
+
+#### Other commands:
+
+`make test` - launch tests
+
+`make publish` - publish
+
+
+
+Made as part of project training at [hexlet.io](http://hexlet.io/)
