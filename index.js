@@ -1,4 +1,3 @@
-import console from './io/console';
-import { createPlatform } from './src';
+import core from './src';
 
-export default createPlatform(console);
+export default core;

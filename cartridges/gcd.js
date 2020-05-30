@@ -13,7 +13,7 @@ export default {
     const gcd = getGCD(number1, number2);
 
     const description = `${number1} ${number2}`;
-    const solution = gcd;
+    const solution = gcd.toString();
 
     return { description, solution };
   },

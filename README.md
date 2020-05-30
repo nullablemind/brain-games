@@ -5,9 +5,15 @@
 
 `make install` - Установка зависимостей
 
-`make game-list` - Получить список игр
+`make run-balance` - Запуск игры balance
 
-`make run G=even` - Запуск игры event (не нужно указывать расширение .js)
+`make run-calc` - Запуск игры calc
+
+`make run-even` - Запуск игры even
+
+`make run-gcd` - Запуск игры gcd
+
+`make run-progression` - Запуск игры progression
 
 `make publish` - Публикация игр
 

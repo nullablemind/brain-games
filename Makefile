@@ -1,11 +1,20 @@
 install:
 		npm install
 
-run:
-		npm run babel-node -- './bin/$(G).js'
+run-balance:
+		npm run babel-node -- './bin/balance.js'
 
-game-list:
-		ls './bin/'
+run-calc:
+		npm run babel-node -- './bin/calc.js'
+
+run-even:
+		npm run babel-node -- './bin/even.js'
+
+run-gcd:
+		npm run babel-node -- './bin/gcd.js'
+
+run-progression:
+		npm run babel-node -- './bin/progression.js'
 
 publish:
 		npm publish

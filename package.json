@@ -1,9 +1,13 @@
 {
   "name": "js_l1_brain_games-s12",
-  "version": "5.0.0",
-  "description": "Brain games",
+  "version": "6.0.1",
+  "description": "🧠 Brain games",
   "bin": {
-    "brain-even": "./bin/brain-even.js"
+    "brain-balance": "./bin/balance.js",
+    "brain-calc": "./bin/calc.js",
+    "brain-even": "./bin/even.js",
+    "brain-gcd": "./bin/gcd.js",
+    "brain-progression": "./bin/progression.js"
   },
   "scripts": {
     "test": "nyc riteway test/**/*.js | tap-nirvana",

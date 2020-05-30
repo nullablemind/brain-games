@@ -24,7 +24,7 @@ export default {
     copySequence[indexHideNumber] = '..';
 
     const description = copySequence.join(' ');
-    const solution = sequence[indexHideNumber];
+    const solution = sequence[indexHideNumber].toString();
 
     return { description, solution };
   },
