@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import runGame from '../src';
-import progression from '../gameTemplates/cartridges/progression';
+import progression from '../cartridges/progression';
 
 runGame(progression);

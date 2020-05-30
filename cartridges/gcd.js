@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../lib';
+import { getRandomNumber } from './lib';
 
 const getGCD = (number1, number2) =>
   (number2 === 0

@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../lib';
+import { getRandomNumber } from './lib';
 
 const replaceChar = (string, index, newChar) => {
   let newString = '';

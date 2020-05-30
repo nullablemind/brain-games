@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 import runGame from '../src';
-import even from '../gameTemplates/cartridges/even';
+import even from '../cartridges/even';
 
 runGame(even);
