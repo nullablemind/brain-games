@@ -1,9 +1,8 @@
 import { getRandomNumber } from './lib';
 
-const getGCD = (number1, number2) =>
-  (number2 === 0
-    ? Math.abs(number1)
-    : getGCD(number2, number1 % number2));
+const getGCD = (number1, number2) => (number2 === 0
+  ? Math.abs(number1)
+  : getGCD(number2, number1 % number2));
 
 export default {
   description: 'Find the greatest common divisor of given numbers.',

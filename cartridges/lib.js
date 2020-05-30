@@ -1,5 +1,4 @@
-export const getRandomNumber = (min, max) =>
-  Math.floor(min + (Math.random() * ((max + 1) - min)));
+export const getRandomNumber = (min, max) => Math.floor(min + (Math.random() * ((max + 1) - min)));
 
 export const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) => {
   switch (generatorRandomNumber(1, 4)) {
@@ -16,5 +15,4 @@ export const randomArithmeticSign = (generatorRandomNumber = getRandomNumber) =>
   }
 };
 
-export const isOdd = number =>
-  Math.abs(number % 2) === 1;
+export const isOdd = (number) => Math.abs(number % 2) === 1;

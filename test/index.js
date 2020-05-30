@@ -10,7 +10,7 @@ describe('game() - won case', async (assert) => {
     describe: 'game desc',
     generator: () => problem,
   };
-  const speak = text => log.push({ method: 'speak', text });
+  const speak = (text) => log.push({ method: 'speak', text });
   const ask = (question) => {
     log.push({ method: 'ask', question });
     if (question === 'May I have your name, please? ') {
@@ -55,7 +55,7 @@ describe('game() - lost case', async (assert) => {
     describe: 'game desc',
     generator: () => problem,
   };
-  const speak = text => log.push({ method: 'speak', text });
+  const speak = (text) => log.push({ method: 'speak', text });
   const ask = (question, remainProblems) => {
     log.push({ method: 'ask', question });
     if (question === 'May I have your name, please? ') {
