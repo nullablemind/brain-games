@@ -1,17 +1,17 @@
 import { getRandomNumber } from './lib';
 
-const getGCD = (number1, number2) => (number2 === 0
-  ? Math.abs(number1)
-  : getGCD(number2, number1 % number2));
+const getGCD = (numberA, numberB) => (numberB === 0
+  ? Math.abs(numberA)
+  : getGCD(numberB, numberA % numberB));
 
 export default {
   gameDescription: 'Find the greatest common divisor of given numbers.',
   generateProblem() {
-    const number1 = getRandomNumber(1, 100);
-    const number2 = getRandomNumber(1, 100);
-    const gcd = getGCD(number1, number2);
+    const numberA = getRandomNumber(1, 100);
+    const numberB = getRandomNumber(1, 100);
+    const gcd = getGCD(numberA, numberB);
 
-    const description = `${number1} ${number2}`;
+    const description = `${numberA} ${numberB}`;
     const solution = gcd.toString();
 
     return { description, solution };
