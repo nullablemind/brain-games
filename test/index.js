@@ -7,8 +7,8 @@ describe('game() - won case', async (assert) => {
   const problem = { description: 'prob desc', solution: 'prob solution' };
   const playerName = 'Mike';
   const catridge = {
-    describe: 'game desc',
-    generator: () => problem,
+    gameDescription: 'game desc',
+    generateProblem: () => problem,
   };
   const speak = (text) => log.push({ method: 'speak', text });
   const ask = (question) => {
@@ -22,18 +22,18 @@ describe('game() - won case', async (assert) => {
 
   const expected = [
     { method: 'speak', text: 'Welcome to the Brain Games!\n' },
-    { method: 'speak', text: `${catridge.description}\n\n` },
+    { method: 'speak', text: `${catridge.gameDescription}\n\n` },
     { method: 'ask', question: 'May I have your name, please? ' },
     { method: 'speak', text: `Hello, ${playerName}!\n\n` },
     { method: 'speak', text: `Question: ${problem.description}\n` },
     { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n' },
+    { method: 'speak', text: 'Correct!\n\n' },
     { method: 'speak', text: `Question: ${problem.description}\n` },
     { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n' },
+    { method: 'speak', text: 'Correct!\n\n' },
     { method: 'speak', text: `Question: ${problem.description}\n` },
     { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n' },
+    { method: 'speak', text: 'Correct!\n\n' },
     { method: 'speak', text: `Congratulations, ${playerName}!\n` },
   ];
 
@@ -52,8 +52,8 @@ describe('game() - lost case', async (assert) => {
   const playerName = 'Mike';
   const wrongPlayerAnswer = 'wrong answer';
   const catridge = {
-    describe: 'game desc',
-    generator: () => problem,
+    gameDescription: 'game desc',
+    generateProblem: () => problem,
   };
   const speak = (text) => log.push({ method: 'speak', text });
   const ask = (question, remainProblems) => {
@@ -70,15 +70,15 @@ describe('game() - lost case', async (assert) => {
 
   const expected = [
     { method: 'speak', text: 'Welcome to the Brain Games!\n' },
-    { method: 'speak', text: `${catridge.description}\n\n` },
+    { method: 'speak', text: `${catridge.gameDescription}\n\n` },
     { method: 'ask', question: 'May I have your name, please? ' },
     { method: 'speak', text: `Hello, ${playerName}!\n\n` },
     { method: 'speak', text: `Question: ${problem.description}\n` },
     { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n' },
+    { method: 'speak', text: 'Correct!\n\n' },
     { method: 'speak', text: `Question: ${problem.description}\n` },
     { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: `"${wrongPlayerAnswer}" is wrong answer ;(. Correct answer was "${problem.solution}".\n` },
+    { method: 'speak', text: `"${wrongPlayerAnswer}" is wrong answer ;(. Correct answer was "${problem.solution}".\n\n` },
     { method: 'speak', text: `Let's try again, ${playerName}!\n` },
   ];
 

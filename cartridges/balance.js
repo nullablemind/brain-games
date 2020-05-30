@@ -48,8 +48,8 @@ const quickSort = (numbers) => {
 };
 
 export default {
-  description: 'Balance the given number.',
-  generator() {
+  gameDescription: 'Balance the given number.',
+  generateProblem() {
     const number = getRandomNumber(100, 10000);
     const description = number.toString();
     const solution = quickSort(balanceNumber(description));
