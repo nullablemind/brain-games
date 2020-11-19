@@ -24,7 +24,7 @@
 
 `make test` - launch tests
 
-`make publish` - publish
+`make publish` - publish game to npm
 
 
 
