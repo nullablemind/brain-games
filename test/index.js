@@ -1,8 +1,8 @@
 const { describe } = require('riteway');
 const game = require('../src');
 
-const speakLog = text => ({ method: 'speak', text });
-const askLog = question => ({ method: 'ask', question });
+const speakLog = (text) => ({ method: 'speak', text });
+const askLog = (question) => ({ method: 'ask', question });
 
 describe('game() - won case', async (assert) => {
   const log = [];
@@ -13,15 +13,19 @@ describe('game() - won case', async (assert) => {
     gameDescription: 'game desc',
     generateProblem: () => problem,
   };
-  const speak = (text) => log.push({ method: 'speak', text });
-  const ask = (question) => {
-    log.push({ method: 'ask', question });
-    if (question === 'May I have your name, please? ') {
-      return playerName;
-    }
-    return problem.solution;
+
+  const io = {
+    speak: (text) => log.push({ method: 'speak', text }),
+    ask: (question) => {
+      log.push({ method: 'ask', question });
+      if (question === 'May I have your name, please? ') {
+        return playerName;
+      }
+      return problem.solution;
+    },
   };
-  game(catridge, { speak, ask });
+
+  game(catridge, io);
 
   const expected = [
     speakLog('Welcome to the Brain Games!\n'),
