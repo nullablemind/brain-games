@@ -60,22 +60,20 @@ describe('game() - won case', async (assert) => {
 });
 
 describe('game() - lost case', async (assert) => {
-  const log = [];
-
   const wrongPlayerAnswer = 'wrong answer';
 
-  const speak = (text) => log.push({ method: 'speak', text });
-  const ask = (question, problemNumber) => {
-    log.push({ method: 'ask', question });
+  const { io, getLog } = logger((question, problemNumber) => {
     if (question === 'May I have your name, please? ') {
       return playerName;
     }
     if (problemNumber === 2) {
       return wrongPlayerAnswer;
     }
+
     return problem(problemNumber).solution;
-  };
-  game(catridge, { speak, ask });
+  });
+
+  game(catridge, io);
 
   const expected = [
     speakLog('Welcome to the Brain Games!\n'),
@@ -98,7 +96,7 @@ describe('game() - lost case', async (assert) => {
   assert({
     given: 'wrong answer',
     should: 'lost',
-    actual: log,
+    actual: getLog(),
     expected,
   });
 });
