@@ -7,7 +7,7 @@ const askLog = (question) => ({ method: 'ask', question });
 describe('game() - won case', async (assert) => {
   const log = [];
 
-  const problem = (number) => ({ description: `problem desc ${number}`, solution: 'prob solution' });
+  const problem = (number) => ({ description: `problem desc ${number}`, solution: `prob solution ${number}` });
   const playerName = 'Mike';
   const catridge = {
     gameDescription: 'game desc',
@@ -18,9 +18,11 @@ describe('game() - won case', async (assert) => {
     speak: (text) => log.push({ method: 'speak', text }),
     ask: (question, problemNumber) => {
       log.push({ method: 'ask', question });
+
       if (question === 'May I have your name, please? ') {
         return playerName;
       }
+
       return problem(problemNumber).solution;
     },
   };
@@ -44,8 +46,8 @@ describe('game() - won case', async (assert) => {
   ];
 
   assert({
-    given: 'game()',
-    should: 'be right ordered methods call',
+    given: 'catridge and io',
+    should: 'call methods in correct order',
     actual: log,
     expected,
   });
