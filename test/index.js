@@ -1,6 +1,9 @@
 const { describe } = require('riteway');
 const game = require('../src');
 
+const speakLog = text => ({ method: 'speak', text });
+const askLog = question => ({ method: 'ask', question });
+
 describe('game() - won case', async (assert) => {
   const log = [];
 
@@ -21,20 +24,25 @@ describe('game() - won case', async (assert) => {
   game(catridge, { speak, ask });
 
   const expected = [
-    { method: 'speak', text: 'Welcome to the Brain Games!\n' },
-    { method: 'speak', text: `${catridge.gameDescription}\n\n` },
-    { method: 'ask', question: 'May I have your name, please? ' },
-    { method: 'speak', text: `Hello, ${playerName}!\n\n` },
-    { method: 'speak', text: `Question: ${problem.description}\n` },
-    { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n\n' },
-    { method: 'speak', text: `Question: ${problem.description}\n` },
-    { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n\n' },
-    { method: 'speak', text: `Question: ${problem.description}\n` },
-    { method: 'ask', question: 'Your answer: ' },
-    { method: 'speak', text: 'Correct!\n\n' },
-    { method: 'speak', text: `Congratulations, ${playerName}!\n` },
+    speakLog('Welcome to the Brain Games!\n'),
+    speakLog(`${catridge.gameDescription}\n\n`),
+
+    askLog('May I have your name, please? '),
+    speakLog(`Hello, ${playerName}!\n\n`),
+
+    speakLog(`Question: ${problem.description}\n`),
+    askLog('Your answer: '),
+    speakLog('Correct!\n\n'),
+
+    speakLog(`Question: ${problem.description}\n`),
+    askLog('Your answer: '),
+    speakLog('Correct!\n\n'),
+
+    speakLog(`Question: ${problem.description}\n`),
+    askLog('Your answer: '),
+    speakLog('Correct!\n\n'),
+
+    speakLog(`Congratulations, ${playerName}!\n`),
   ];
 
   assert({
