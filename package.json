@@ -1,6 +1,6 @@
 {
   "name": "js_l1_brain_games-s12",
-  "version": "7.2.0",
+  "version": "7.2.2",
   "description": "🧠 Brain games",
   "bin": {
     "brain-balance": "./bin/balance.js",
