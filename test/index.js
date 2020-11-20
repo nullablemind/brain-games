@@ -26,8 +26,8 @@ const logger = (getAnswer) => {
   };
 };
 
-describe('game() - won case', async (assert) => {
-  const { io, getLog } = logger((question, problemNumber) => {
+describe('game()', async (assert) => {
+  const logWithWonCase = logger((question, problemNumber) => {
     if (question === 'May I have your name, please? ') {
       return playerName;
     }
@@ -35,12 +35,12 @@ describe('game() - won case', async (assert) => {
     return problem(problemNumber).solution;
   });
 
-  game(catridge, io);
+  game(catridge, logWithWonCase.io);
 
   assert({
     given: 'all right answers',
     should: 'won',
-    actual: getLog(),
+    actual: logWithWonCase.getLog(),
     expected: [
       speakLog('Welcome to the Brain Games!\n'),
       speakLog(`${catridge.gameDescription}\n\n`),
@@ -57,12 +57,10 @@ describe('game() - won case', async (assert) => {
       speakLog(`Congratulations, ${playerName}!\n`),
     ],
   });
-});
 
-describe('game() - lost case', async (assert) => {
   const wrongPlayerAnswer = 'wrong answer';
 
-  const { io, getLog } = logger((question, problemNumber) => {
+  const logWithLostCase = logger((question, problemNumber) => {
     if (question === 'May I have your name, please? ') {
       return playerName;
     }
@@ -73,30 +71,28 @@ describe('game() - lost case', async (assert) => {
     return problem(problemNumber).solution;
   });
 
-  game(catridge, io);
-
-  const expected = [
-    speakLog('Welcome to the Brain Games!\n'),
-    speakLog(`${catridge.gameDescription}\n\n`),
-
-    askLog('May I have your name, please? '),
-    speakLog(`Hello, ${playerName}!\n\n`),
-
-    speakLog(`Question: ${problem(1).description}\n`),
-    askLog('Your answer: '),
-    speakLog('Correct!\n\n'),
-
-    speakLog(`Question: ${problem(2).description}\n`),
-    askLog('Your answer: '),
-
-    speakLog(`"${wrongPlayerAnswer}" is wrong answer ;(. Correct answer was "${problem(2).solution}".\n\n`),
-    speakLog(`Let's try again, ${playerName}!\n`),
-  ];
+  game(catridge, logWithLostCase.io);
 
   assert({
     given: 'wrong answer',
     should: 'lost',
-    actual: getLog(),
-    expected,
+    actual: logWithLostCase.getLog(),
+    expected: [
+      speakLog('Welcome to the Brain Games!\n'),
+      speakLog(`${catridge.gameDescription}\n\n`),
+
+      askLog('May I have your name, please? '),
+      speakLog(`Hello, ${playerName}!\n\n`),
+
+      speakLog(`Question: ${problem(1).description}\n`),
+      askLog('Your answer: '),
+      speakLog('Correct!\n\n'),
+
+      speakLog(`Question: ${problem(2).description}\n`),
+      askLog('Your answer: '),
+
+      speakLog(`"${wrongPlayerAnswer}" is wrong answer ;(. Correct answer was "${problem(2).solution}".\n\n`),
+      speakLog(`Let's try again, ${playerName}!\n`),
+    ],
   });
 });
