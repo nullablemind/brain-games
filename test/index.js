@@ -7,21 +7,21 @@ const askLog = (question) => ({ method: 'ask', question });
 describe('game() - won case', async (assert) => {
   const log = [];
 
-  const problem = { description: 'prob desc', solution: 'prob solution' };
+  const problem = (number) => ({ description: `problem desc ${number}`, solution: 'prob solution' });
   const playerName = 'Mike';
   const catridge = {
     gameDescription: 'game desc',
-    generateProblem: () => problem,
+    generateProblem: problem,
   };
 
   const io = {
     speak: (text) => log.push({ method: 'speak', text }),
-    ask: (question) => {
+    ask: (question, problemNumber) => {
       log.push({ method: 'ask', question });
       if (question === 'May I have your name, please? ') {
         return playerName;
       }
-      return problem.solution;
+      return problem(problemNumber).solution;
     },
   };
 
@@ -34,17 +34,11 @@ describe('game() - won case', async (assert) => {
     askLog('May I have your name, please? '),
     speakLog(`Hello, ${playerName}!\n\n`),
 
-    speakLog(`Question: ${problem.description}\n`),
-    askLog('Your answer: '),
-    speakLog('Correct!\n\n'),
-
-    speakLog(`Question: ${problem.description}\n`),
-    askLog('Your answer: '),
-    speakLog('Correct!\n\n'),
-
-    speakLog(`Question: ${problem.description}\n`),
-    askLog('Your answer: '),
-    speakLog('Correct!\n\n'),
+    ...[1, 2, 3].reduce((acc, number) => acc.concat([
+      speakLog(`Question: ${problem(number).description}\n`),
+      askLog('Your answer: '),
+      speakLog('Correct!\n\n'),
+    ]), []),
 
     speakLog(`Congratulations, ${playerName}!\n`),
   ];
