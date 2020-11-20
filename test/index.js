@@ -56,12 +56,12 @@ describe('game() - lost case', async (assert) => {
     generateProblem: () => problem,
   };
   const speak = (text) => log.push({ method: 'speak', text });
-  const ask = (question, remainProblems) => {
+  const ask = (question, problemNumber) => {
     log.push({ method: 'ask', question });
     if (question === 'May I have your name, please? ') {
       return playerName;
     }
-    if (remainProblems === 2) {
+    if (problemNumber === 2) {
       return wrongPlayerAnswer;
     }
     return problem.solution;
