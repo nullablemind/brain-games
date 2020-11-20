@@ -1,4 +1,12 @@
-module.exports = ({ gameDescription, generateProblem }, { speak, ask }) => {
+const readlineSync = require('readline-sync');
+
+const speakConsole = (msg) => process.stdout.write(msg);
+const askConsole = (question) => readlineSync.question(question);
+
+module.exports = (
+  { gameDescription, generateProblem },
+  { speak = speakConsole, ask = askConsole } = {},
+) => {
   const PROBLEMS_TO_SOLVE = 3;
   let playerName = 'guest';
 
