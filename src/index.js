@@ -9,7 +9,8 @@ module.exports = ({ gameDescription, generateProblem }, { speak, ask }) => {
     speak('Welcome to the Brain Games!\n');
     speak(`${gameDescription}\n\n`);
 
-    playerName = ask('May I have your name, please? ');
+    const name = ask('May I have your name, please? ');
+    if (name !== '') playerName = name;
     speak(`Hello, ${playerName}!\n\n`);
   }
 
