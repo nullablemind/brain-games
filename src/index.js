@@ -1,26 +1,61 @@
 module.exports = ({ gameDescription, generateProblem }, { speak, ask }) => {
-  speak('Welcome to the Brain Games!\n');
-  speak(`${gameDescription}\n\n`);
+  const PROBLEMS_TO_SOLVE = 3;
+  let playerName = 'guest';
 
-  const playerName = ask('May I have your name, please? ');
-  speak(`Hello, ${playerName}!\n\n`);
+  intro();
+  play();
 
-  const play = (remainProblems) => {
-    if (remainProblems === 0) return speak(`Congratulations, ${playerName}!\n`);
+  function intro() {
+    speak('Welcome to the Brain Games!\n');
+    speak(`${gameDescription}\n\n`);
 
-    const { description, solution } = generateProblem(remainProblems);
+    playerName = ask('May I have your name, please? ');
+    speak(`Hello, ${playerName}!\n\n`);
+  }
 
-    speak(`Question: ${description}\n`);
-    const playerAnswer = ask('Your answer: ', remainProblems);
+  function play(problemNumber = 1) {
+    const problem = generateProblem(problemNumber);
 
-    if (playerAnswer === solution) {
-      speak('Correct!\n\n');
-      return play(remainProblems - 1);
+    const playerAnswer = askAndAnswer(problem, problemNumber);
+
+    if (isCorrectAnswer(playerAnswer, problem)) {
+      onCorrectAnswer();
+
+      if (isWin(problemNumber)) {
+        onWon();
+      } else {
+        play(problemNumber + 1);
+      }
+    } else {
+      onLost(playerAnswer, problem);
     }
+  }
 
-    speak(`"${playerAnswer}" is wrong answer ;(. Correct answer was "${solution}".\n\n`);
-    return speak(`Let's try again, ${playerName}!\n`);
-  };
+  function isWin(problemNumber) {
+    return PROBLEMS_TO_SOLVE === problemNumber;
+  }
 
-  play(3);
+  function isCorrectAnswer(playerAnswer, problem) {
+    return playerAnswer === problem.solution;
+  }
+
+  function askAndAnswer(problem, problemNumber) {
+    speak(`Question: ${problem.description}\n`);
+    const playerAnswer = ask('Your answer: ', problemNumber);
+
+    return playerAnswer;
+  }
+
+  function onCorrectAnswer() {
+    speak('Correct!\n\n');
+  }
+
+  function onWon() {
+    speak(`Congratulations, ${playerName}!\n`);
+  }
+
+  function onLost(playerAnswer, problem) {
+    speak(`"${playerAnswer}" is wrong answer ;(. Correct answer was "${problem.solution}".\n\n`);
+    speak(`Let's try again, ${playerName}!\n`);
+  }
 };
