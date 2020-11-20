@@ -10,22 +10,30 @@ const catridge = {
 };
 const playerName = 'Mike';
 
-
-describe('game() - won case', async (assert) => {
+const logger = (getAnswer) => {
   const log = [];
 
-  const io = {
-    speak: (text) => log.push({ method: 'speak', text }),
-    ask: (question, problemNumber) => {
-      log.push({ method: 'ask', question });
+  return {
+    io: {
+      speak: (text) => log.push(speakLog(text)),
+      ask: (question, problemNumber) => {
+        log.push(askLog(question));
 
-      if (question === 'May I have your name, please? ') {
-        return playerName;
-      }
-
-      return problem(problemNumber).solution;
+        return getAnswer(question, problemNumber);
+      },
     },
+    getLog: () => [...log],
   };
+};
+
+describe('game() - won case', async (assert) => {
+  const { io, getLog } = logger((question, problemNumber) => {
+    if (question === 'May I have your name, please? ') {
+      return playerName;
+    }
+
+    return problem(problemNumber).solution;
+  });
 
   game(catridge, io);
 
@@ -48,7 +56,7 @@ describe('game() - won case', async (assert) => {
   assert({
     given: 'all right answers',
     should: 'won',
-    actual: log,
+    actual: getLog(),
     expected,
   });
 });
