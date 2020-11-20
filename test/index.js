@@ -37,27 +37,25 @@ describe('game() - won case', async (assert) => {
 
   game(catridge, io);
 
-  const expected = [
-    speakLog('Welcome to the Brain Games!\n'),
-    speakLog(`${catridge.gameDescription}\n\n`),
-
-    askLog('May I have your name, please? '),
-    speakLog(`Hello, ${playerName}!\n\n`),
-
-    ...[1, 2, 3].reduce((acc, number) => acc.concat([
-      speakLog(`Question: ${problem(number).description}\n`),
-      askLog('Your answer: '),
-      speakLog('Correct!\n\n'),
-    ]), []),
-
-    speakLog(`Congratulations, ${playerName}!\n`),
-  ];
-
   assert({
     given: 'all right answers',
     should: 'won',
     actual: getLog(),
-    expected,
+    expected: [
+      speakLog('Welcome to the Brain Games!\n'),
+      speakLog(`${catridge.gameDescription}\n\n`),
+
+      askLog('May I have your name, please? '),
+      speakLog(`Hello, ${playerName}!\n\n`),
+
+      ...[1, 2, 3].reduce((acc, number) => acc.concat([
+        speakLog(`Question: ${problem(number).description}\n`),
+        askLog('Your answer: '),
+        speakLog('Correct!\n\n'),
+      ]), []),
+
+      speakLog(`Congratulations, ${playerName}!\n`),
+    ],
   });
 });
 
