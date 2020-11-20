@@ -46,8 +46,8 @@ describe('game() - won case', async (assert) => {
   ];
 
   assert({
-    given: 'catridge and io',
-    should: 'call methods in correct order',
+    given: 'all right answers',
+    should: 'won',
     actual: log,
     expected,
   });
@@ -90,8 +90,8 @@ describe('game() - lost case', async (assert) => {
   ];
 
   assert({
-    given: 'catridge and io',
-    should: 'call methods in correct order',
+    given: 'wrong answer',
+    should: 'lost',
     actual: log,
     expected,
   });
